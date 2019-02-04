@@ -1,15 +1,18 @@
 <template>
     <div id="app">
         <app-header></app-header>
+        <app-catalog></app-catalog>
     </div>
 </template>
 
 <script>
 import Header from './components/Header.vue'
+import Catalog from './components/Catalog.vue'
 
 export default {
     components: {
-        'app-header': Header
+        'app-header': Header,
+        'app-catalog': Catalog
     }
 }
 </script>

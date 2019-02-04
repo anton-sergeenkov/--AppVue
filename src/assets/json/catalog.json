@@ -1,0 +1,20 @@
+{
+    "0": {
+        "name": "Canon EOS R body",
+        "img": "https://images.unsplash.com/photo-1516724562728-afc824a36e84?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=751&q=80",
+        "price": 1000,
+        "description": "Lorem ipsum1, dolor sit amet consectetur adipisicing elit. Voluptatum laboriosam ratione alias minus nostrum commodi inventore dolor quia sapiente"
+    },
+    "1": {
+        "name": "Canon EOS 650D + 18-55mm IS II",
+        "img": "https://images.unsplash.com/photo-1519638831568-d9897f54ed69?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
+        "price": 2000,
+        "description": "Lorem ipsum2, dolor sit amet consectetur adipisicing elit. Voluptatum laboriosam ratione alias minus nostrum commodi inventore dolor quia sapiente"
+    },
+    "2": {
+        "name": "Canon EOS 5D Mark IV body",
+        "img": "https://images.unsplash.com/photo-1480365501497-199581be0e66?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
+        "price": 3000,
+        "description": "Lorem ipsum3, dolor sit amet consectetur adipisicing elit. Voluptatum laboriosam ratione alias minus nostrum commodi inventore dolor quia sapiente"
+    }
+}
