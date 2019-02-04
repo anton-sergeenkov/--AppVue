@@ -11,9 +11,7 @@
 
 <script>
 const axios = require('axios');
-
 import catalogJSON from '../assets/json/catalog.json';
-console.log(catalogJSON[0].name);
 
 export default {
     data() {
