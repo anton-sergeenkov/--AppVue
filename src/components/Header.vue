@@ -17,15 +17,9 @@ export default {
 
 <style scoped>
 .wrapper {
-    max-width: 1920px;
-    margin: auto;
-    display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px;
-    background-color: #eee;
-    font-family: sans-serif;
-    font-size: 16px;
+    background-color: var(--color-light);
 }
 .logo {
     height: 50px;
