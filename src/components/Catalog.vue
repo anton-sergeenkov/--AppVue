@@ -10,7 +10,6 @@
 </template>
 
 <script>
-const axios = require('axios');
 import catalogJSON from '../assets/json/catalog.json';
 
 export default {
