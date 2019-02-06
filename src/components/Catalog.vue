@@ -1,11 +1,16 @@
 <template>
     <div class="wrapper">
-        <div class="element" v-for="item in catalog">
-            <div class="name">{{item.name}}</div>
-            <div class="img" :style="{ backgroundImage: 'url('+item.img+')' }"></div>
-            <div class="price">{{item.price}} USD</div>
-            <div class="description">{{item.description}}</div>
+        <h1>Catalog</h1>
+
+        <div class="container">
+            <div class="element" v-for="item in catalog">
+                <h3 class="name">{{item.name}}</h3>
+                <div class="img" :style="{ backgroundImage: 'url('+item.img+')' }"></div>
+                <div class="price">{{item.price}} USD</div>
+                <div class="description">{{item.description}}</div>
+            </div>
         </div>
+
     </div>
 </template>
 
@@ -22,6 +27,10 @@ export default {
 </script>
 
 <style scoped>
+.container {
+    display: flex;
+    width: 100%;
+}
 .wrapper {
     flex-wrap: wrap;
 }
@@ -46,6 +55,9 @@ export default {
 .element .price       { grid-area: price; }
 .element .description { grid-area: description; }
 
+.element .price {
+    font-weight: bold;
+}
 .element .img {
     background-repeat: no-repeat;
     background-position: center center;
