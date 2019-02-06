@@ -8,6 +8,7 @@
 <script>
 import Header from    './components/Header.vue'
 import Catalog from   './components/Catalog.vue'
+import Product from   './components/Product.vue'
 import Contact from   './components/Contact.vue'
 import Page404 from   './components/Page404.vue'
 import PageIndex from './components/PageIndex.vue'
@@ -19,10 +20,11 @@ export default {
 }
 
 export const routes = [
-    { path: '*',        component: Page404 },
-    { path: '/',        component: PageIndex },
-    { path: '/catalog', component: Catalog },
-    { path: '/contact', component: Contact }
+    { path: '*',            component: Page404 },
+    { path: '/',            component: PageIndex },
+    { path: '/catalog',     component: Catalog },
+    { path: '/catalog/:id', component: Product },
+    { path: '/contact',     component: Contact }
 ]
 </script>
 
