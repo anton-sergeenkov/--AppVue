@@ -2,6 +2,10 @@
     <div id="app">
         <app-header></app-header>
         <app-catalog></app-catalog>
+
+        <router-link to="/foo">Перейти к Foo</router-link>
+        <router-link to="/bar">Перейти к Bar</router-link>
+        <router-view></router-view>
     </div>
 </template>
 
