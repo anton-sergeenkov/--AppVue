@@ -7,7 +7,7 @@
                 <div class="img" :style="{ backgroundImage: 'url('+item.img+')' }"></div>
                 <div class="price">{{item.price}} USD</div>
                 <div class="description">{{item.description}}</div>
-                <router-link :to="'/catalog/'+i">Подробнее</router-link>
+                <router-link :to="{name: 'product', params: {id: i}}">Подробнее</router-link>
             </div>
         </div>
     </div>

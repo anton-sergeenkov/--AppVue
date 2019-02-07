@@ -1,9 +1,11 @@
 <template>
     <div class="wrapper">
-        <img src="../assets/logo.png" class="logo">
+        <router-link :to="{name: 'index'}">
+            <img src="../assets/logo.png" class="logo">
+        </router-link>
         <ul class="menu">
-            <li><router-link to="/catalog">Каталог</router-link></li>
-            <li><router-link to="/contact">Контакты</router-link></li>
+            <li><router-link :to="{name: 'catalog'}">Каталог</router-link></li>
+            <li><router-link :to="{name: 'contact'}">Контакты</router-link></li>
         </ul>
         <input type="text" placeholder="search" class="search" v-model="textSearch">
     </div>
@@ -20,6 +22,9 @@ export default {
 </script>
 
 <style scoped>
+.menu .router-link-active {
+    background: var(--color-accent);
+}
 .wrapper {
     justify-content: space-between;
     align-items: center;

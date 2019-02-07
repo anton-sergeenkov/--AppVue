@@ -6,12 +6,12 @@
 </template>
 
 <script>
-import Header from    './components/Header.vue'
-import Catalog from   './components/Catalog.vue'
-import Product from   './components/Product.vue'
-import Contact from   './components/Contact.vue'
-import Page404 from   './components/Page404.vue'
-import PageIndex from './components/PageIndex.vue'
+import Header  from './components/Header.vue'
+import Catalog from './components/Catalog.vue'
+import Product from './components/Product.vue'
+import Contact from './components/Contact.vue'
+import Page404 from './components/Page404.vue'
+import Index   from './components/Index.vue'
 
 export default {
     components: {
@@ -20,11 +20,11 @@ export default {
 }
 
 export const routes = [
-    { path: '*',            component: Page404 },
-    { path: '/',            component: PageIndex },
-    { path: '/catalog',     component: Catalog },
-    { path: '/catalog/:id', component: Product },
-    { path: '/contact',     component: Contact }
+    { path: '/',            component: Index,   name: 'index'   },
+    { path: '/catalog',     component: Catalog, name: 'catalog' },
+    { path: '/catalog/:id', component: Product, name: 'product' },
+    { path: '/contact',     component: Contact, name: 'contact' },
+    { path: '*',            component: Page404, name: 'page404' }
 ]
 </script>
 
@@ -47,9 +47,6 @@ body {
     margin: auto;
     display: flex;
     padding: 30px;
-}
-.router-link-active {
-    background: var(--color-accent);
 }
 h1 {
     color: var(--color-dark);
