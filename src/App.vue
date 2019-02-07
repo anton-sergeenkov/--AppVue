@@ -33,8 +33,9 @@ export const routes = [
     --color-light: #eee;
     --color-accent: #ffda4a;
     --color-dark: #304a58;
-    --font-h1: 25px;
+    --font-small: 14px;
     --font-main: 16px;
+    --font-h1: 25px;
 }
 body {
     margin: 0;
@@ -56,5 +57,15 @@ h3 {
     color: var(--color-dark);
     font-size: var(--font-main);
     margin: 5px 0;
+}
+.btn {
+    padding: 10px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-family: inherit;
+    font-size: var(--font-small);
 }
 </style>

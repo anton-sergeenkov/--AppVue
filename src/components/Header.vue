@@ -7,16 +7,22 @@
             <li><router-link :to="{name: 'catalog'}">Каталог</router-link></li>
             <li><router-link :to="{name: 'contact'}">Контакты</router-link></li>
         </ul>
+        <app-shopping-cart></app-shopping-cart>
         <input type="text" placeholder="search" class="search" v-model="textSearch">
     </div>
 </template>
 
 <script>
+import ShoppingCart  from './ShoppingCart.vue'
+
 export default {
     data() {
         return {
             textSearch: null
         }
+    },
+    components: {
+        'app-shopping-cart': ShoppingCart
     }
 }
 </script>
@@ -44,6 +50,7 @@ export default {
     margin: 0;
     padding: 0;
     list-style-type: none;
+    margin-left: 50px;
 }
 .menu li a {
     padding: 10px 15px;
