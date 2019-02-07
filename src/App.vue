@@ -1,36 +1,60 @@
 <template>
     <div id="app">
         <app-header></app-header>
-        <app-catalog></app-catalog>
+        <router-view></router-view>
     </div>
 </template>
 
 <script>
-import Header from './components/Header.vue'
+import Header  from './components/Header.vue'
 import Catalog from './components/Catalog.vue'
+import Product from './components/Product.vue'
+import Contact from './components/Contact.vue'
+import Page404 from './components/Page404.vue'
+import Index   from './components/Index.vue'
 
 export default {
     components: {
-        'app-header': Header,
-        'app-catalog': Catalog
+        'app-header': Header
     }
 }
+
+export const routes = [
+    { path: '/',            component: Index,   name: 'index'   },
+    { path: '/catalog',     component: Catalog, name: 'catalog' },
+    { path: '/catalog/:id', component: Product, name: 'product' },
+    { path: '/contact',     component: Contact, name: 'contact' },
+    { path: '*',            component: Page404, name: 'page404' }
+]
 </script>
 
 <style>
 :root {
     --color-light: #eee;
+    --color-accent: #ffda4a;
+    --color-dark: #304a58;
+    --font-h1: 25px;
+    --font-main: 16px;
 }
 body {
     margin: 0;
     padding: 0;
+    font-size: var(--font-main);
+    font-family: sans-serif;
 }
 .wrapper {
     max-width: 1920px;
     margin: auto;
     display: flex;
-    font-family: sans-serif;
-    font-size: 16px;
     padding: 30px;
+}
+h1 {
+    color: var(--color-dark);
+    font-size: var(--font-h1);
+}
+h3 {
+    color: var(--color-dark);
+    font-size: var(--font-main);
+    margin: 5px 0;
 }
 </style>

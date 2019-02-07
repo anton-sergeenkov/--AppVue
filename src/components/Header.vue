@@ -1,6 +1,12 @@
 <template>
     <div class="wrapper">
-        <img src="../assets/logo.png" class="logo">
+        <router-link :to="{name: 'index'}">
+            <img src="../assets/logo.png" class="logo">
+        </router-link>
+        <ul class="menu">
+            <li><router-link :to="{name: 'catalog'}">Каталог</router-link></li>
+            <li><router-link :to="{name: 'contact'}">Контакты</router-link></li>
+        </ul>
         <input type="text" placeholder="search" class="search" v-model="textSearch">
     </div>
 </template>
@@ -16,6 +22,9 @@ export default {
 </script>
 
 <style scoped>
+.menu .router-link-active {
+    background: var(--color-accent);
+}
 .wrapper {
     justify-content: space-between;
     align-items: center;
@@ -29,5 +38,18 @@ export default {
     padding: 10px;
     font-family: inherit;
     font-size: inherit;
+}
+.menu {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.menu li a {
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 3px;
+    color: black;
+    text-decoration: none;
 }
 </style>
