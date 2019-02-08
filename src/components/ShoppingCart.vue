@@ -1,13 +1,15 @@
 <template>
-    <div class="container">Корзина покупок {{ count }}</div>
+    <div class="container">Корзина покупок {{ storeCount }}</div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-    data() {
-        return {
-            count: 0
-        }
+    computed: {
+        ...mapGetters([
+            'storeCount'
+        ])
     }
 }
 </script>
