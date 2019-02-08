@@ -1,7 +1,6 @@
 <template>
     <div class="wrapper">
         <h1>Catalog</h1>
-        {{count}}
         <div class="container">
             <div class="product" v-for="(item, i) in catalog">
                 <h3 class="product-name">{{item.name}}</h3>
@@ -9,26 +8,26 @@
                 <div class="product-price">{{item.price}} USD</div>
                 <div class="product-description">{{item.description}}</div>
                 <router-link :to="{name: 'product', params: {id: i}}" class="product-link">Подробнее</router-link>
-                <button class="btn product-buy" @click="addProductToCart(i)">Добавить в корзину</button>
+                <button class="btn product-buy" @click="changeCount(i)">Добавить в корзину</button>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import catalogJSON from '../assets/json/catalog.json';
+import catalogJSON from '../assets/json/catalog.json'
+import { mapActions } from 'vuex'
 
 export default {
     data() {
         return {
-            catalog: catalogJSON,
-            count: null
+            catalog: catalogJSON
         };
     },
     methods: {
-        addProductToCart(id) {
-            this.count = id;
-        }
+        ...mapActions([
+            'changeCount'
+        ])
     }
 }
 </script>

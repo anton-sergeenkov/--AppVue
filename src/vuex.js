@@ -8,13 +8,18 @@ export const store = new Vuex.Store({
         count: 0
     },
     mutations: {
-        changeStore(state, payload) {
-            state.count = payload.count
+        changeCount(state) {
+            state.count++
         }
     },
     getters: {
         storeCount(state) {
             return state.count
+        }
+    },
+    actions: {
+        changeCount(context) {
+            context.commit('changeCount');
         }
     }
 })
