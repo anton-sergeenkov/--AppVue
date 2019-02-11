@@ -8,7 +8,7 @@
                 <div class="product-price">{{item.price}} USD</div>
                 <div class="product-description">{{item.description}}</div>
                 <router-link :to="{name: 'product', params: {id: i}}" class="product-link">Подробнее</router-link>
-                <button class="btn product-buy" @click="changeCount(i)">Добавить в корзину</button>
+                <button class="btn product-buy" @click="addProductToCart(item.id)">Добавить в корзину</button>
             </div>
         </div>
     </div>
@@ -26,7 +26,7 @@ export default {
     },
     methods: {
         ...mapActions([
-            'changeCount'
+            'addProductToCart'
         ])
     }
 }
