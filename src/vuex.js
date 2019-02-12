@@ -15,15 +15,6 @@ export const store = new Vuex.Store({
     mutations: {
         addProductId(state, payload) {
             state.count = payload.count;
-        },
-        addProductCounter(state) {
-            var productsLocalStorage = localStorage.getItem('products');
-
-            if (productsLocalStorage !== null) {
-                state.count = JSON.parse(productsLocalStorage).length;
-            } else {
-                state.count = 0;
-            }
         }
     },
     actions: {
@@ -49,7 +40,15 @@ export const store = new Vuex.Store({
             return isNewProduct;
         },
         addProductCounter({ commit }) {
-            commit('addProductCounter');
+            var productsLocalStorage = localStorage.getItem('products');
+            
+            if (productsLocalStorage !== null) {
+                var count = JSON.parse(productsLocalStorage).length;
+            } else {
+                var count = 0;
+            }
+            
+            commit('addProductId', {count:count});
         }
     }
 })
