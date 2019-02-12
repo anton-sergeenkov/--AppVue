@@ -14,26 +14,11 @@ export const store = new Vuex.Store({
     },
     mutations: {
         addProductId(state, payload) {
-            var products = [];
-            var productsLocalStorage = localStorage.getItem('products');
-
-            if (productsLocalStorage !== null) {
-                products = JSON.parse(productsLocalStorage);
-            }
-
-            var isNewProduct = products.every(function(item) {
-                return item !== payload.id;
-            })
-
-            if (isNewProduct) {
-                products.push(payload.id);
-                localStorage.setItem('products', JSON.stringify(products));  
-            }
-            state.count = products.length;
+            state.count = payload.count;
         },
         addProductCounter(state) {
             var productsLocalStorage = localStorage.getItem('products');
-            
+
             if (productsLocalStorage !== null) {
                 state.count = JSON.parse(productsLocalStorage).length;
             } else {
@@ -43,7 +28,25 @@ export const store = new Vuex.Store({
     },
     actions: {
         addProductId({ commit }, id) {
-            commit('addProductId', {id:id});
+            var products = [];
+            var productsLocalStorage = localStorage.getItem('products');
+
+            if (productsLocalStorage !== null) {
+                products = JSON.parse(productsLocalStorage);
+            }
+
+            var isNewProduct = products.every(function(item) {
+                return item !== id;
+            })
+
+            if (isNewProduct) {
+                products.push(id);
+                localStorage.setItem('products', JSON.stringify(products));  
+            }
+
+            commit('addProductId', {count:products.length});
+
+            return isNewProduct;
         },
         addProductCounter({ commit }) {
             commit('addProductCounter');
