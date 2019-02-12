@@ -27,11 +27,7 @@ export default {
     methods: {
         ...mapActions([
             'addProductId',
-            'addProductCounter'
         ])
-    },
-    mounted() {
-        this.addProductCounter();
     }
 }
 </script>
