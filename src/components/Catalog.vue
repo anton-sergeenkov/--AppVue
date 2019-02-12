@@ -8,7 +8,7 @@
                 <div class="product-price">{{item.price}} USD</div>
                 <div class="product-description">{{item.description}}</div>
                 <router-link :to="{name: 'product', params: {id: i}}" class="product-link">Подробнее</router-link>
-                <button class="btn product-buy" @click="checkProduct(item.id)">Добавить в корзину</button>
+                <button class="btn product-buy" @click="checkProduct($event, item.id)">{{ btnCartText }}</button>
             </div>
         </div>
     </div>
@@ -21,16 +21,25 @@ import { mapActions } from 'vuex'
 export default {
     data() {
         return {
-            catalog: catalogJSON
+            catalog: catalogJSON,
+            btnCartText: 'Добавить в корзину',
+            btnActiveCartText: 'Добавлено'
         };
     },
     methods: {
         ...mapActions([
             'addProductId',
         ]),
-        checkProduct(id) {
+        checkProduct(event, id) {
+
             this.addProductId(id).then(response => {
-                console.log(response);
+                if (response) {
+                    event.toElement.classList.add('active');
+                    event.toElement.innerText = this.btnActiveCartText;
+                } else {
+                    event.toElement.classList.remove('active');
+                    event.toElement.innerText = this.btnCartText;
+                }
             });
         }
     }
@@ -88,5 +97,8 @@ export default {
 }
 .product-buy {
     background: #fff;
+}
+.active {
+    background-image: linear-gradient(to right, #e2f87c, #d6f567, #c8f151, #b9ee38, #a8eb12);
 }
 </style>
