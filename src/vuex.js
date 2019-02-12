@@ -22,19 +22,19 @@ export const store = new Vuex.Store({
             }
 
             var isNewProduct = products.every(function(item) {
-                return item != payload.idProduct;
+                return item !== payload.id;
             })
 
             if (isNewProduct) {
-                products.push(payload.idProduct);
+                products.push(payload.id);
                 localStorage.setItem('products', JSON.stringify(products));
                 state.count = products.length;
             }
         }
     },
     actions: {
-        addProductToCart({ commit }, idProduct) {
-            commit('addProductToCart', {idProduct:idProduct});
+        addProductToCart({ commit }, id) {
+            commit('addProductToCart', {id:id});
         }
     }
 })
