@@ -1,5 +1,5 @@
 <template>
-    <div class="container">Корзина покупок {{ storeProducts }} {{ storeCount }}</div>
+    <div class="container">Корзина покупок {{ storeCount }}</div>
 </template>
 
 <script>

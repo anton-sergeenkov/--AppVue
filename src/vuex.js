@@ -5,30 +5,31 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
     state: {
-        count: 0,
-        products: []
+        count: 0
     },
     getters: {
         storeCount(state) {
             return state.count
-        },
-        storeProducts(state) {
-            return state.products
         }
     },
     mutations: {
         addProductToCart(state, payload) {
-            var isNewProduct = state.products.every(function(item) {
-                return item != payload.idProduct;
-            })
-            if (isNewProduct) {
-                state.products.push(payload.idProduct);
+            var products = [];
+            var productsLocalStorage = localStorage.getItem('products');
+
+            if (productsLocalStorage !== null) {
+                products = JSON.parse(productsLocalStorage);
             }
 
-            localStorage.setItem('products', JSON.stringify(state.products));
-            // var products = JSON.parse(localStorage.getItem('products'));
+            var isNewProduct = products.every(function(item) {
+                return item != payload.idProduct;
+            })
 
-            state.count = state.products.length;
+            if (isNewProduct) {
+                products.push(payload.idProduct);
+                localStorage.setItem('products', JSON.stringify(products));
+                state.count = products.length;
+            }
         }
     },
     actions: {
