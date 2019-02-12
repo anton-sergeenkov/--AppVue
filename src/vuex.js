@@ -26,14 +26,17 @@ export const store = new Vuex.Store({
                 products = JSON.parse(productsLocalStorage);
             }
 
-            var isNewProduct = products.every(function(item) {
-                return item !== id;
-            })
+            var index = products.indexOf(id);
 
-            if (isNewProduct) {
+            if (index === -1) {
                 products.push(id);
-                localStorage.setItem('products', JSON.stringify(products));  
+                var isNewProduct = true;
+            } else {
+                products.splice(index, 1);
+                var isNewProduct = false;
             }
+
+            localStorage.setItem('products', JSON.stringify(products));  
 
             commit('addProductId', {count:products.length});
 
