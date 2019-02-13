@@ -8,7 +8,11 @@
                 <div class="product-price">{{item.price}} USD</div>
                 <div class="product-description">{{item.description}}</div>
                 <router-link :to="{name: 'product', params: {id: i}}" class="product-link">Подробнее</router-link>
-                <button class="btn product-buy" @click="checkProduct($event, item.id)">{{ btnCartText }}</button>
+                <button 
+                    class="btn product-buy" 
+                    :class="{active:products.some(function(i){ return i == item.id })}" 
+                    @click="checkProduct($event, item.id)"
+                >{{ btnCartText }}</button>
             </div>
         </div>
     </div>
@@ -23,7 +27,8 @@ export default {
         return {
             catalog: catalogJSON,
             btnCartText: 'Добавить в корзину',
-            btnActiveCartText: 'Добавлено'
+            btnActiveCartText: 'Добавлено',
+            products: null
         };
     },
     methods: {
@@ -42,6 +47,15 @@ export default {
                 }
             });
         }
+    },
+    created() {
+        var products = [];
+        var productsLocalStorage = localStorage.getItem('products');
+
+        if (productsLocalStorage !== null) {
+            products = JSON.parse(productsLocalStorage);
+        }
+        this.products = products;
     }
 }
 </script>
