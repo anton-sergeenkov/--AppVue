@@ -84,8 +84,8 @@ export default {
     grid-template-rows: auto auto minmax(100px, auto);
     grid-gap: 20px;
     width: 450px;
-    margin: 10px;
-    padding: 20px;
+    margin: 15px;
+    padding: 15px;
     background: var(--color-light);
     border-radius: 3px;
     box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
