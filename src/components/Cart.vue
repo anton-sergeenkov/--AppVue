@@ -3,7 +3,7 @@
         <h1>Корзина покупок</h1>
         <div class="container">
 
-            <div class="product" v-for="(item, i) in catalog">
+            <div class="product" v-for="(item, i) in catalogCart">
                 <h3 class="product-name">{{item.name}}</h3>
                 <div class="product-img" :style="{ backgroundImage: 'url('+item.img+')' }"></div>
                 <div class="product-price">{{item.price}} USD</div>
@@ -20,11 +20,8 @@ export default {
     data() {
         return {
             catalog: catalogJSON,
-            products: null
+            catalogCart: []
         };
-    },
-    methods: {
-        //
     },
     created() {
         var products = [];
@@ -33,10 +30,14 @@ export default {
         if (productsLocalStorage !== null) {
             products = JSON.parse(productsLocalStorage);
         }
-        this.products = products;
 
-        for(let i in this.catalog) {
+        for(var i in this.catalog) {
             this.catalog[i].id;
+            var isContain = products.indexOf(this.catalog[i].id);
+            if (isContain !== -1) {
+                this.catalogCart.push(this.catalog[i]);
+            }
+            
         }
     }
 }
