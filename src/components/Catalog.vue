@@ -32,7 +32,7 @@ export default {
     },
     methods: {
         ...mapActions([
-            'addProductId',
+            'addProductId'
         ]),
         checkProduct(id) {
             return this.products.some(function(i){ 
