@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        <h1>Catalog</h1>
+        <h1>Каталог товаров</h1>
         <div class="container">
             <div class="product" v-for="(item, i) in catalog">
                 <h3 class="product-name">{{item.name}}</h3>

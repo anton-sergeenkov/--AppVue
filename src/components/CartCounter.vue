@@ -28,8 +28,6 @@ export default {
 .cart {
     width: 40px;
     height: 40px;
-    margin-left: auto;
-    margin-right: 50px;
     position: relative;
     background-image: url(../assets/icons/shopping-cart.svg);
     background-repeat: no-repeat;
@@ -45,4 +43,5 @@ export default {
     right: -25px;
     color: var(--color-dark)
 }
+
 </style>
