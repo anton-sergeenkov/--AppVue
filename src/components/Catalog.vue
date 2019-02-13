@@ -8,11 +8,10 @@
                 <div class="product-price">{{item.price}} USD</div>
                 <div class="product-description">{{item.description}}</div>
                 <router-link :to="{name: 'product', params: {id: i}}" class="product-link">Подробнее</router-link>
-                <button 
-                    class="btn product-buy" 
-                    :class="{active:products.some(function(i){ return i == item.id })}" 
-                    @click="checkProduct($event, item.id)"
-                >{{ btnCartText }}</button>
+                <button class="btn product-buy" :class="{active:checkProduct(item.id)}" @click="chooseProduct($event, item.id)">
+                    <slot v-if="checkProduct(item.id)">{{btnActiveCartText}}</slot>
+                    <slot v-else>{{btnCartText}}</slot>
+                </button>
             </div>
         </div>
     </div>
@@ -27,7 +26,7 @@ export default {
         return {
             catalog: catalogJSON,
             btnCartText: 'Добавить в корзину',
-            btnActiveCartText: 'Добавлено',
+            btnActiveCartText: 'Удалить из корзины',
             products: null
         };
     },
@@ -35,7 +34,12 @@ export default {
         ...mapActions([
             'addProductId',
         ]),
-        checkProduct(event, id) {
+        checkProduct(id) {
+            return this.products.some(function(i){ 
+                return i == id
+            })
+        },
+        chooseProduct(event, id) {
 
             this.addProductId(id).then(response => {
                 if (response) {
