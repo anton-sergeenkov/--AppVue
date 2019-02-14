@@ -17,18 +17,13 @@ export class CartService {
 
         if (index === -1) {
             products.push(id);
-            var isNewProduct = true;
         } else {
             products.splice(index, 1);
-            var isNewProduct = false;
         }
 
         localStorage.setItem('products', JSON.stringify(products));  
 
-        return {
-            isNewProduct: isNewProduct,
-            count: products.length
-        }
+        return products;
     }
 
     putProductCounter() {

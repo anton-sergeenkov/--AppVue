@@ -41,15 +41,8 @@ export default {
             })
         },
         chooseProduct(event, id) {
-
             this.addProductId(id).then(response => {
-                if (response) {
-                    event.toElement.classList.add('active');
-                    event.toElement.innerText = this.btnActiveCartText;
-                } else {
-                    event.toElement.classList.remove('active');
-                    event.toElement.innerText = this.btnCartText;
-                }
+                this.products = response;
             });
         }
     },
