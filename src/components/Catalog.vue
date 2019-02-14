@@ -19,7 +19,8 @@
 
 <script>
 import catalogJSON from '../assets/json/catalog.json'
-import { mapActions } from 'vuex'
+import {mapActions} from 'vuex'
+import {CartService} from '../CartService.js'
 
 export default {
     data() {
@@ -53,13 +54,8 @@ export default {
         }
     },
     created() {
-        var products = [];
-        var productsLocalStorage = localStorage.getItem('products');
-
-        if (productsLocalStorage !== null) {
-            products = JSON.parse(productsLocalStorage);
-        }
-        this.products = products;
+        var cartService = new CartService();
+        this.products = cartService.getProducts();
     }
 }
 </script>

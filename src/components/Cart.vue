@@ -2,19 +2,18 @@
     <div class="wrapper">
         <h1>Корзина покупок</h1>
         <div class="container">
-
             <div class="product" v-for="(item, i) in catalogCart">
                 <h3 class="product-name">{{item.name}}</h3>
                 <div class="product-img" :style="{ backgroundImage: 'url('+item.img+')' }"></div>
                 <div class="product-price">{{item.price}} USD</div>
             </div>
-
         </div>
     </div>
 </template>
 
 <script>
 import catalogJSON from '../assets/json/catalog.json'
+import {CartService} from '../CartService.js'
 
 export default {
     data() {
@@ -24,13 +23,8 @@ export default {
         };
     },
     created() {
-        var products = [];
-        var productsLocalStorage = localStorage.getItem('products');
-
-        if (productsLocalStorage !== null) {
-            products = JSON.parse(productsLocalStorage);
-        }
-
+        var cartService = new CartService();
+        var products = cartService.getProducts();
         for(var i in this.catalog) {
             this.catalog[i].id;
             var isContain = products.indexOf(this.catalog[i].id);
