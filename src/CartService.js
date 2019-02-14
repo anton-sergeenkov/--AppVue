@@ -1,5 +1,7 @@
 export class CartService {
-    
+    constructor() {
+        //
+    }
     getProducts() {
         var products = [];
         var productsLocalStorage = localStorage.getItem('products');
