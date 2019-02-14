@@ -6,6 +6,7 @@
                 <h3 class="product-name">{{item.name}}</h3>
                 <div class="product-img" :style="{ backgroundImage: 'url('+item.img+')' }"></div>
                 <div class="product-price">{{item.price}} USD</div>
+                <button class="btn product-buy" @click="removeProduct">Удалить из корзины</button>
             </div>
         </div>
     </div>
@@ -22,6 +23,11 @@ export default {
             catalogCart: []
         };
     },
+    methods: {
+        removeProduct() {
+            //
+        }
+    },
     created() {
         var cartService = new CartService();
         var products = cartService.getProducts();
@@ -31,7 +37,6 @@ export default {
             if (isContain !== -1) {
                 this.catalogCart.push(this.catalog[i]);
             }
-            
         }
     }
 }
@@ -51,6 +56,10 @@ export default {
     padding: 20px;
     background: var(--color-light);
     margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    justify-content: space-between;
 }
 .product-name {
     text-align: center;
@@ -65,5 +74,13 @@ export default {
 .product-price {
     font-weight: bold;
     text-align: center;
+}
+.product-buy {
+    border: 1px solid var(--color-dark);
+    margin-top: 10px;
+    transition: 0.4s;
+}
+.product-buy:hover {
+    background: #fff;
 }
 </style>
