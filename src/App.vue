@@ -12,6 +12,7 @@ import Product from './components/Product.vue'
 import Contact from './components/Contact.vue'
 import Page404 from './components/Page404.vue'
 import Index   from './components/Index.vue'
+import Cart    from './components/Cart.vue'
 
 export default {
     components: {
@@ -24,6 +25,7 @@ export const routes = [
     { path: '/catalog',     component: Catalog, name: 'catalog' },
     { path: '/catalog/:id', component: Product, name: 'product' },
     { path: '/contact',     component: Contact, name: 'contact' },
+    { path: '/cart',        component: Cart,    name: 'cart'    },
     { path: '*',            component: Page404, name: 'page404' }
 ]
 </script>
@@ -35,7 +37,9 @@ export const routes = [
     --color-dark: #304a58;
     --font-small: 14px;
     --font-main: 16px;
-    --font-h1: 25px;
+    --font-h1: 23px;
+    --font-h2: 21px;
+    --margin-menu: 50px;
 }
 body {
     margin: 0;
@@ -52,6 +56,10 @@ body {
 h1 {
     color: var(--color-dark);
     font-size: var(--font-h1);
+}
+h2 {
+    color: var(--color-dark);
+    font-size: var(--font-h2);
 }
 h3 {
     color: var(--color-dark);

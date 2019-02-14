@@ -1,5 +1,5 @@
 <template>
     <div class="wrapper">
-        <h1>Index page</h1>
+        <h1>Главная</h1>
     </div>
 </template>

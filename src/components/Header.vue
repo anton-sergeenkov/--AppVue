@@ -4,25 +4,21 @@
             <img src="../assets/logo.png" class="logo">
         </router-link>
         <ul class="menu">
-            <li><router-link :to="{name: 'catalog'}">Каталог</router-link></li>
-            <li><router-link :to="{name: 'contact'}">Контакты</router-link></li>
+            <li><router-link :to="{name: 'catalog'}" class="link-menu">Каталог</router-link></li>
+            <li><router-link :to="{name: 'contact'}" class="link-menu">Контакты</router-link></li>
         </ul>
-        <app-shopping-cart></app-shopping-cart>
-        <input type="text" placeholder="search" class="search" v-model="textSearch">
+        <router-link :to="{name: 'cart'}" class="link-cart">
+            <app-cart-counter></app-cart-counter>
+        </router-link>
     </div>
 </template>
 
 <script>
-import ShoppingCart  from './ShoppingCart.vue'
+import CartCounter from './CartCounter.vue'
 
 export default {
-    data() {
-        return {
-            textSearch: null
-        }
-    },
     components: {
-        'app-shopping-cart': ShoppingCart
+        'app-cart-counter': CartCounter
     }
 }
 </script>
@@ -39,24 +35,22 @@ export default {
 .logo {
     height: 50px;
 }
-.search {
-    width: 200px;
-    padding: 10px;
-    font-family: inherit;
-    font-size: inherit;
-}
 .menu {
     display: flex;
     margin: 0;
     padding: 0;
     list-style-type: none;
-    margin-left: 50px;
+    margin-left: var(--margin-menu);
 }
-.menu li a {
+.link-menu {
     padding: 10px 15px;
     margin: 5px;
     border-radius: 3px;
     color: black;
     text-decoration: none;
+}
+.link-cart {
+    margin-left: auto;
+    margin-right: var(--margin-menu);
 }
 </style>

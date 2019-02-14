@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        <h1>Catalog</h1>
+        <h1>Каталог товаров</h1>
         <div class="container">
             <div class="product" v-for="(item, i) in catalog">
                 <h3 class="product-name">{{item.name}}</h3>
@@ -8,7 +8,10 @@
                 <div class="product-price">{{item.price}} USD</div>
                 <div class="product-description">{{item.description}}</div>
                 <router-link :to="{name: 'product', params: {id: i}}" class="product-link">Подробнее</router-link>
-                <button class="btn product-buy" @click="checkProduct($event, item.id)">{{ btnCartText }}</button>
+                <button class="btn product-buy" :class="{active:checkProduct(item.id)}" @click="chooseProduct($event, item.id)">
+                    <slot v-if="checkProduct(item.id)">{{btnActiveCartText}}</slot>
+                    <slot v-else>{{btnCartText}}</slot>
+                </button>
             </div>
         </div>
     </div>
@@ -23,14 +26,20 @@ export default {
         return {
             catalog: catalogJSON,
             btnCartText: 'Добавить в корзину',
-            btnActiveCartText: 'Добавлено'
+            btnActiveCartText: 'Удалить из корзины',
+            products: null
         };
     },
     methods: {
         ...mapActions([
-            'addProductId',
+            'addProductId'
         ]),
-        checkProduct(event, id) {
+        checkProduct(id) {
+            return this.products.some(function(i){ 
+                return i == id
+            })
+        },
+        chooseProduct(event, id) {
 
             this.addProductId(id).then(response => {
                 if (response) {
@@ -42,6 +51,15 @@ export default {
                 }
             });
         }
+    },
+    created() {
+        var products = [];
+        var productsLocalStorage = localStorage.getItem('products');
+
+        if (productsLocalStorage !== null) {
+            products = JSON.parse(productsLocalStorage);
+        }
+        this.products = products;
     }
 }
 </script>
@@ -66,8 +84,8 @@ export default {
     grid-template-rows: auto auto minmax(100px, auto);
     grid-gap: 20px;
     width: 450px;
-    margin: 10px;
-    padding: 20px;
+    margin: 15px;
+    padding: 15px;
     background: var(--color-light);
     border-radius: 3px;
     box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
