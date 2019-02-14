@@ -27,8 +27,8 @@ export const store = new Vuex.Store({
         },
         addProductCounter({ commit }) {
             var cartService = new CartService();
-            var count = cartService.putProductCounter();
-            commit('addProductId', {count:count});
+            var products = cartService.getProducts();
+            commit('addProductId', {count:products.length});
         }
     }
 })

@@ -1,7 +1,5 @@
 export class CartService {
-    constructor() {
-        //
-    }
+    constructor() {}
     getProducts() {
         var products = [];
         var productsLocalStorage = localStorage.getItem('products');
@@ -10,24 +8,15 @@ export class CartService {
         }
         return products;
     }
-
     putProduct(id) {
         var products = this.getProducts();
         var index = products.indexOf(id);
-
         if (index === -1) {
             products.push(id);
         } else {
             products.splice(index, 1);
         }
-
         localStorage.setItem('products', JSON.stringify(products));  
-
         return products;
-    }
-
-    putProductCounter() {
-        var products = this.getProducts();
-        return products.length;
     }
 }
