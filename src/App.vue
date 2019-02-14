@@ -75,5 +75,6 @@ h3 {
     background: none;
     font-family: inherit;
     font-size: var(--font-small);
+    display: block;
 }
 </style>

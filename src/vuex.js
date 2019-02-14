@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import {CartService} from './CartService.js'
 
 Vue.use(Vuex)
 
@@ -19,39 +20,15 @@ export const store = new Vuex.Store({
     },
     actions: {
         addProductId({ commit }, id) {
-            var products = [];
-            var productsLocalStorage = localStorage.getItem('products');
-
-            if (productsLocalStorage !== null) {
-                products = JSON.parse(productsLocalStorage);
-            }
-
-            var index = products.indexOf(id);
-
-            if (index === -1) {
-                products.push(id);
-                var isNewProduct = true;
-            } else {
-                products.splice(index, 1);
-                var isNewProduct = false;
-            }
-
-            localStorage.setItem('products', JSON.stringify(products));  
-
+            var cartService = new CartService();
+            var products = cartService.putProduct(id);
             commit('addProductId', {count:products.length});
-
-            return isNewProduct;
+            return products;
         },
         addProductCounter({ commit }) {
-            var productsLocalStorage = localStorage.getItem('products');
-            
-            if (productsLocalStorage !== null) {
-                var count = JSON.parse(productsLocalStorage).length;
-            } else {
-                var count = 0;
-            }
-            
-            commit('addProductId', {count:count});
+            var cartService = new CartService();
+            var products = cartService.getProducts();
+            commit('addProductId', {count:products.length});
         }
     }
 })

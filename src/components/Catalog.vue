@@ -9,8 +9,8 @@
                 <div class="product-description">{{item.description}}</div>
                 <router-link :to="{name: 'product', params: {id: i}}" class="product-link">Подробнее</router-link>
                 <button class="btn product-buy" :class="{active:checkProduct(item.id)}" @click="chooseProduct($event, item.id)">
-                    <slot v-if="checkProduct(item.id)">{{btnActiveCartText}}</slot>
-                    <slot v-else>{{btnCartText}}</slot>
+                    <slot v-if="checkProduct(item.id)">Удалить из корзины</slot>
+                    <slot v-else>Добавить в корзину</slot>
                 </button>
             </div>
         </div>
@@ -19,14 +19,13 @@
 
 <script>
 import catalogJSON from '../assets/json/catalog.json'
-import { mapActions } from 'vuex'
+import {mapActions} from 'vuex'
+import {CartService} from '../CartService.js'
 
 export default {
     data() {
         return {
             catalog: catalogJSON,
-            btnCartText: 'Добавить в корзину',
-            btnActiveCartText: 'Удалить из корзины',
             products: null
         };
     },
@@ -40,26 +39,14 @@ export default {
             })
         },
         chooseProduct(event, id) {
-
             this.addProductId(id).then(response => {
-                if (response) {
-                    event.toElement.classList.add('active');
-                    event.toElement.innerText = this.btnActiveCartText;
-                } else {
-                    event.toElement.classList.remove('active');
-                    event.toElement.innerText = this.btnCartText;
-                }
+                this.products = response;
             });
         }
     },
     created() {
-        var products = [];
-        var productsLocalStorage = localStorage.getItem('products');
-
-        if (productsLocalStorage !== null) {
-            products = JSON.parse(productsLocalStorage);
-        }
-        this.products = products;
+        var cartService = new CartService();
+        this.products = cartService.getProducts();
     }
 }
 </script>
