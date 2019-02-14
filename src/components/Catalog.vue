@@ -9,8 +9,8 @@
                 <div class="product-description">{{item.description}}</div>
                 <router-link :to="{name: 'product', params: {id: i}}" class="product-link">Подробнее</router-link>
                 <button class="btn product-buy" :class="{active:checkProduct(item.id)}" @click="chooseProduct($event, item.id)">
-                    <slot v-if="checkProduct(item.id)">{{btnActiveCartText}}</slot>
-                    <slot v-else>{{btnCartText}}</slot>
+                    <slot v-if="checkProduct(item.id)">Удалить из корзины</slot>
+                    <slot v-else>Добавить в корзину</slot>
                 </button>
             </div>
         </div>
@@ -26,8 +26,6 @@ export default {
     data() {
         return {
             catalog: catalogJSON,
-            btnCartText: 'Добавить в корзину',
-            btnActiveCartText: 'Удалить из корзины',
             products: null
         };
     },
