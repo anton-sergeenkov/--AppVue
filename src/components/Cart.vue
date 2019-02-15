@@ -6,7 +6,7 @@
                 <h3 class="product-name">{{item.name}}</h3>
                 <div class="product-img" :style="{ backgroundImage: 'url('+item.img+')' }"></div>
                 <div class="product-price">{{item.price}} USD</div>
-                <button class="btn product-buy" @click="removeProduct">Удалить из корзины</button>
+                <button class="btn product-buy" @click="removeProduct(item.id)">Удалить из корзины</button>
             </div>
         </div>
     </div>
@@ -20,24 +20,30 @@ export default {
     data() {
         return {
             catalog: catalogJSON,
-            catalogCart: []
+            catalogCart: [],
+            products: null
         };
     },
     methods: {
-        removeProduct() {
-            //
+        removeProduct(id) {
+            var cartService = new CartService();
+            var products = cartService.putProduct(id);
+            this.catalogCart = this.getCatalogCart(this.catalogCart, products);
+        },
+        getCatalogCart(catalog, products) {
+            var catalogCart = [];
+            for(var i in catalog) {
+                if (products.indexOf(catalog[i].id) !== -1) {
+                    catalogCart.push(catalog[i]);
+                }
+            }
+            return catalogCart;
         }
     },
     created() {
         var cartService = new CartService();
         var products = cartService.getProducts();
-        for(var i in this.catalog) {
-            this.catalog[i].id;
-            var isContain = products.indexOf(this.catalog[i].id);
-            if (isContain !== -1) {
-                this.catalogCart.push(this.catalog[i]);
-            }
-        }
+        this.catalogCart = this.getCatalogCart(this.catalog, products);
     }
 }
 </script>
