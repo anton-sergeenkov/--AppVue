@@ -18,5 +18,5 @@ npm run lint  # lints and fixes files
 - Просмотр и удаление выбранных продуктов на странице "Корзины покупок"  
 
 ## Технологии
-Vue.js, Vuex, Vue Router, Vue CLI 3
-HTML5, CSS3, JavaScript
+- Vue.js, Vuex, Vue Router, Vue CLI 3  
+- HTML5, CSS3, JavaScript  

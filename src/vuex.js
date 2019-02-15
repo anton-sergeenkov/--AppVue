@@ -12,23 +12,22 @@ export const store = new Vuex.Store({
         storeCount(state) {
             return state.count
         }
-    },
+    }, 
     mutations: {
-        addProductId(state, payload) {
+        SET_PRODUCTS_COUNT(state, payload) {
             state.count = payload.count;
         }
     },
     actions: {
-        addProductId({ commit }, id) {
+        setProductsCount({ commit }, id) {
             var cartService = new CartService();
-            var products = cartService.putProduct(id);
-            commit('addProductId', {count:products.length});
+            if (id !== null) {
+                var products = cartService.putProduct(id);
+            } else {
+                var products = cartService.getProducts();
+            }
+            commit('SET_PRODUCTS_COUNT', {count:products.length});
             return products;
-        },
-        addProductCounter({ commit }) {
-            var cartService = new CartService();
-            var products = cartService.getProducts();
-            commit('addProductId', {count:products.length});
         }
     }
 })

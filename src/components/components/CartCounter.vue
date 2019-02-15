@@ -15,11 +15,11 @@ export default {
     },
     methods: {
         ...mapActions([
-            'addProductCounter'
+            'setProductsCount'
         ])
     },
     mounted() {
-        this.addProductCounter();
+        this.setProductsCount(null);
     }
 }
 </script>

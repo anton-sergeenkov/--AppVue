@@ -28,10 +28,10 @@ export default {
     },
     methods: {
         ...mapActions([
-            'addProductId'
+            'setProductsCount'
         ]),
         removeProduct(id) {
-            this.addProductId(id).then(response => {
+            this.setProductsCount(id).then(response => {
                 this.catalogCart = this.getCatalogCart(this.catalogCart, response);
             });
         },
