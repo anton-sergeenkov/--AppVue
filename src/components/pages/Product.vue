@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import catalogJSON from '../assets/json/catalog.json'
+import catalogJSON from '../../assets/json/catalog.json'
 
 export default {
     data() {

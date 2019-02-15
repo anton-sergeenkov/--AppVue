@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import catalogJSON from '../assets/json/catalog.json'
-import {CartService} from '../CartService.js'
+import catalogJSON from '../../assets/json/catalog.json'
+import {CartService} from '../../CartService.js'
 import {mapActions} from 'vuex'
 
 export default {

@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper">
         <router-link :to="{name: 'index'}">
-            <img src="../assets/logo.png" class="logo">
+            <img src="../../assets/logo.png" class="logo">
         </router-link>
         <ul class="menu">
             <li><router-link :to="{name: 'catalog'}" class="link-menu">Каталог</router-link></li>

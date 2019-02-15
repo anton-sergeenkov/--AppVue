@@ -6,13 +6,13 @@
 </template>
 
 <script>
-import Header  from './components/Header.vue'
-import Catalog from './components/Catalog.vue'
-import Product from './components/Product.vue'
-import Contact from './components/Contact.vue'
-import Page404 from './components/Page404.vue'
-import Index   from './components/Index.vue'
-import Cart    from './components/Cart.vue'
+import Header  from './components/components/Header.vue'
+import Catalog from './components/pages/Catalog.vue'
+import Product from './components/pages/Product.vue'
+import Contact from './components/pages/Contact.vue'
+import Page404 from './components/pages/Page404.vue'
+import Index   from './components/pages/Index.vue'
+import Cart    from './components/pages/Cart.vue'
 
 export default {
     components: {

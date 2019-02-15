@@ -29,7 +29,7 @@ export default {
     width: 40px;
     height: 40px;
     position: relative;
-    background-image: url(../assets/icons/shopping-cart.svg);
+    background-image: url(../../assets/icons/shopping-cart.svg);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
