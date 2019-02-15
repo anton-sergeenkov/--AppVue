@@ -1,6 +1,6 @@
 # AppVue
 
-## Project setup
+## NPM
 ```
 npm install   # install dependencies
 npm run serve # compiles and hot-reloads for development

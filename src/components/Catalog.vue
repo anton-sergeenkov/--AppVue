@@ -8,7 +8,7 @@
                 <div class="product-price">{{item.price}} USD</div>
                 <div class="product-description">{{item.description}}</div>
                 <router-link :to="{name: 'product', params: {id: i}}" class="product-link">Подробнее</router-link>
-                <button class="btn product-buy" :class="{active:checkProduct(item.id)}" @click="chooseProduct($event, item.id)">
+                <button class="btn product-buy" :class="{active:checkProduct(item.id)}" @click="chooseProduct(item.id)">
                     <slot v-if="checkProduct(item.id)">Удалить из корзины</slot>
                     <slot v-else>Добавить в корзину</slot>
                 </button>
@@ -19,8 +19,8 @@
 
 <script>
 import catalogJSON from '../assets/json/catalog.json'
-import {mapActions} from 'vuex'
 import {CartService} from '../CartService.js'
+import {mapActions} from 'vuex'
 
 export default {
     data() {
@@ -38,7 +38,7 @@ export default {
                 return i == id
             })
         },
-        chooseProduct(event, id) {
+        chooseProduct(id) {
             this.addProductId(id).then(response => {
                 this.products = response;
             });

@@ -15,6 +15,7 @@
 <script>
 import catalogJSON from '../assets/json/catalog.json'
 import {CartService} from '../CartService.js'
+import {mapActions} from 'vuex'
 
 export default {
     data() {
@@ -25,10 +26,13 @@ export default {
         };
     },
     methods: {
+        ...mapActions([
+            'addProductId'
+        ]),
         removeProduct(id) {
-            var cartService = new CartService();
-            var products = cartService.putProduct(id);
-            this.catalogCart = this.getCatalogCart(this.catalogCart, products);
+            this.addProductId(id).then(response => {
+                this.catalogCart = this.getCatalogCart(this.catalogCart, response);
+            });
         },
         getCatalogCart(catalog, products) {
             var catalogCart = [];
