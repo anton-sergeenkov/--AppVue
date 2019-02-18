@@ -31,7 +31,7 @@ export default {
     },
     methods: {
         ...mapActions([
-            'setProductsCount'
+            'setProductsId'
         ]),
         checkProduct(id) {
             return this.products.some(function(i){ 
@@ -39,7 +39,7 @@ export default {
             })
         },
         chooseProduct(id) {
-            this.setProductsCount(id).then(response => {
+            this.setProductsId(id).then(response => {
                 this.products = response;
             });
         }

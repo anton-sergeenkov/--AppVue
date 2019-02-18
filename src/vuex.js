@@ -6,27 +6,27 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
     state: {
-        count: 0
+        products: []
     },
     getters: {
-        storeCount(state) {
-            return state.count
+        getProductsCount(state) {
+            return state.products.length;
         }
     }, 
     mutations: {
-        SET_PRODUCTS_COUNT(state, payload) {
-            state.count = payload.count;
+        SET_PRODUCTS(state, payload) {
+            state.products = payload.products;
         }
     },
     actions: {
-        setProductsCount({ commit }, id) {
+        setProductsId({ commit }, id) {
             var cartService = new CartService();
             if (id !== null) {
                 var products = cartService.putProduct(id);
             } else {
                 var products = cartService.getProducts();
             }
-            commit('SET_PRODUCTS_COUNT', {count:products.length});
+            commit('SET_PRODUCTS', {products:products});
             return products;
         }
     }

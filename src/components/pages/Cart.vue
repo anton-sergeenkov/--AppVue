@@ -23,15 +23,15 @@ export default {
         return {
             catalog: catalogJSON,
             catalogCart: [],
-            products: null
+            products: []
         };
     },
     methods: {
         ...mapActions([
-            'setProductsCount'
+            'setProductsId'
         ]),
         removeProduct(id) {
-            this.setProductsCount(id).then(response => {
+            this.setProductsId(id).then(response => {
                 this.catalogCart = this.getCatalogCart(this.catalogCart, response);
             });
         },
