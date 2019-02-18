@@ -19,7 +19,7 @@
 
 <script>
 import catalogJSON from '../../assets/json/catalog.json'
-import {CartService} from '../../CartService.js'
+import {cartService} from '../../CartService.js'
 import {mapActions} from 'vuex'
 
 export default {
@@ -45,7 +45,6 @@ export default {
         }
     },
     created() {
-        var cartService = new CartService();
         this.products = cartService.getProducts();
     }
 }

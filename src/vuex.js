@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {CartService} from './CartService.js'
+import {cartService} from './CartService.js'
 
 Vue.use(Vuex)
 
@@ -20,7 +20,6 @@ export const store = new Vuex.Store({
     },
     actions: {
         setProductsId({ commit }, id) {
-            var cartService = new CartService();
             if (id !== null) {
                 var products = cartService.putProduct(id);
             } else {
