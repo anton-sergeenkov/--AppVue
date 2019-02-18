@@ -18,15 +18,15 @@
 </template>
 
 <script>
-import catalogJSON from '../../assets/json/catalog.json'
-import {cartService} from '../../CartService.js'
 import {mapActions} from 'vuex'
+import {cartService} from '../../CartService.js'
+import {api} from '../../api.js'
 
 export default {
     data() {
         return {
-            catalog: catalogJSON,
-            products: null
+            catalog: null,
+            products: []
         };
     },
     methods: {
@@ -46,6 +46,11 @@ export default {
     },
     created() {
         this.products = cartService.getProducts();
+        api.getProductsList()
+            .then(productsList => {
+                this.catalog = productsList;
+            })
+            .catch(error => console.error(error));
     }
 }
 </script>
