@@ -2,21 +2,32 @@
     <div class="wrapper">
         <div class="form" @keyup.esc="close">
             <div class="header">Авторизация</div>
-            <div class="content">
-                <input type="text" class="input" placeholder="Введите логин" autofocus>
-                <input type="text" class="input" placeholder="Введите пароль">
-            </div>
-            <div class="buttons">
-                <input type="submit" class="btn btn-input" value="Вход">
-                <input type="button" class="btn btn-input" value="Отмена" @click="close">
-            </div>
+            <form @submit.prevent="authorization">
+                <div class="content">
+                    <input v-model="login" type="text" class="input" placeholder="Введите логин" autofocus required>
+                    <input v-model="password" type="text" class="input" placeholder="Введите пароль" required>
+                </div>
+                <div class="buttons">
+                    <input type="submit" class="btn btn-input" value="Вход">
+                    <input type="button" class="btn btn-input" value="Отмена" @click="close">
+                </div>
+            </form>
         </div>
     </div>
 </template>
 
 <script>
 export default {
+    data() {
+        return {
+            login: null,
+            password: null
+        }
+    },
     methods: {
+        authorization() {
+            //
+        },
         close() {
             this.$emit('close');
         }
