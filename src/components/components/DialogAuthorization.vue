@@ -1,14 +1,14 @@
 <template>
     <div class="wrapper">
-        <div class="form">
+        <div class="form" @keyup.esc="close">
             <div class="header">Авторизация</div>
             <div class="content">
-                <input type="text" class="input" placeholder="Введите логин">
+                <input type="text" class="input" placeholder="Введите логин" autofocus>
                 <input type="text" class="input" placeholder="Введите пароль">
             </div>
             <div class="buttons">
                 <input type="submit" class="btn btn-input" value="Вход">
-                <input type="button" class="btn btn-input" value="Отмена" @click="$emit('close')">
+                <input type="button" class="btn btn-input" value="Отмена" @click="close">
             </div>
         </div>
     </div>
@@ -17,7 +17,9 @@
 <script>
 export default {
     methods: {
-        //
+        close() {
+            this.$emit('close');
+        }
     }
 }
 </script>
