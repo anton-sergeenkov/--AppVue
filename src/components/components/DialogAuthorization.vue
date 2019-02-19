@@ -2,7 +2,7 @@
     <div class="wrapper">
         <div class="form" @keyup.esc="close">
             <div class="header">Авторизация</div>
-            <form @submit.prevent="authorization">
+            <form @submit.prevent="checkLogin">
                 <div class="content">
                     <input v-model="login" type="text" class="input" placeholder="Введите логин" autofocus required>
                     <input v-model="password" type="text" class="input" placeholder="Введите пароль" required>
@@ -25,8 +25,25 @@ export default {
         }
     },
     methods: {
+        checkLogin() {
+            this.authorization()
+                .then(result => {
+                    alert(result);
+                    this.close();
+                })
+                .catch(error => alert(error.message));
+        },
         authorization() {
-            //
+            var login = this.login;
+            var password = this.password;
+            var promise = new Promise(function(resolve, reject) {
+                if ( (login == 'admin') && (password == '123'))  { 
+                    resolve('Успешно');
+                } else { 
+                    reject(new Error('Неверный логин или пароль'));
+                }
+            });
+            return promise;
         },
         close() {
             this.$emit('close');
