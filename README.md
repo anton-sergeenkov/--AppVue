@@ -8,7 +8,6 @@ npm run build # compiles and minifies for production
 npm run test  # run your tests
 npm run lint  # lints and fixes files
 ``` 
-[Configuration Reference](https://cli.vuejs.org/config/)
 
 ## Описание проекта
 
