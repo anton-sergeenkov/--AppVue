@@ -18,20 +18,20 @@
 </template>
 
 <script>
-import catalogJSON from '../../assets/json/catalog.json'
-import {CartService} from '../../CartService.js'
 import {mapActions} from 'vuex'
+import {cartService} from '../../CartService.js'
+import {api} from '../../api.js'
 
 export default {
     data() {
         return {
-            catalog: catalogJSON,
-            products: null
+            catalog: null,
+            products: []
         };
     },
     methods: {
         ...mapActions([
-            'addProductId'
+            'setProductsId'
         ]),
         checkProduct(id) {
             return this.products.some(function(i){ 
@@ -39,14 +39,18 @@ export default {
             })
         },
         chooseProduct(id) {
-            this.addProductId(id).then(response => {
+            this.setProductsId(id).then(response => {
                 this.products = response;
             });
         }
     },
     created() {
-        var cartService = new CartService();
         this.products = cartService.getProducts();
+        api.getProductsList()
+            .then(productsList => {
+                this.catalog = productsList;
+            })
+            .catch(error => console.error(error));
     }
 }
 </script>

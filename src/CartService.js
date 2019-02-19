@@ -1,4 +1,4 @@
-export class CartService {
+class CartService {
     constructor() {}
     getProducts() {
         var products = [];
@@ -20,3 +20,5 @@ export class CartService {
         return products;
     }
 }
+
+export var cartService = new CartService();

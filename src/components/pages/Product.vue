@@ -10,16 +10,20 @@
 </template>
 
 <script>
-import catalogJSON from '../../assets/json/catalog.json'
+import {api} from '../../api.js'
 
 export default {
     data() {
         return {
-            product: null
+            product: []
         };
     },
     created() {
-        this.product = catalogJSON[this.$route.params.id];;
+        api.getProductsList()
+            .then(productsList => {
+                this.product = productsList[this.$route.params.id];
+            })
+            .catch(error => console.error(error));   
     }
 }
 </script>

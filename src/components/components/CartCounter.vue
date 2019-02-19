@@ -1,6 +1,6 @@
 <template>
     <div class="cart">
-        <div class="cart-counter">{{ storeCount }}</div>
+        <div class="cart-counter">{{ getProductsCount }}</div>
     </div>
 </template>
 
@@ -10,16 +10,16 @@ import {mapGetters, mapActions} from 'vuex'
 export default {
     computed: {
         ...mapGetters([
-            'storeCount'
+            'getProductsCount'
         ])
     },
     methods: {
         ...mapActions([
-            'addProductCounter'
+            'setProductsId'
         ])
     },
     mounted() {
-        this.addProductCounter();
+        this.setProductsId(null);
     }
 }
 </script>

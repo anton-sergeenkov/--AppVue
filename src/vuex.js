@@ -1,34 +1,32 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {CartService} from './CartService.js'
+import {cartService} from './CartService.js'
 
 Vue.use(Vuex)
 
 export const store = new Vuex.Store({
     state: {
-        count: 0
+        products: []
     },
     getters: {
-        storeCount(state) {
-            return state.count
+        getProductsCount(state) {
+            return state.products.length;
         }
-    },
+    }, 
     mutations: {
-        addProductId(state, payload) {
-            state.count = payload.count;
+        SET_PRODUCTS(state, payload) {
+            state.products = payload.products;
         }
     },
     actions: {
-        addProductId({ commit }, id) {
-            var cartService = new CartService();
-            var products = cartService.putProduct(id);
-            commit('addProductId', {count:products.length});
+        setProductsId({ commit }, id) {
+            if (id !== null) {
+                var products = cartService.putProduct(id);
+            } else {
+                var products = cartService.getProducts();
+            }
+            commit('SET_PRODUCTS', {products:products});
             return products;
-        },
-        addProductCounter({ commit }) {
-            var cartService = new CartService();
-            var products = cartService.getProducts();
-            commit('addProductId', {count:products.length});
         }
     }
 })
