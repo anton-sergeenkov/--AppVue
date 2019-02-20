@@ -87,22 +87,22 @@ export default {
     --color-bg-btn: #e6eef7;
 }
 .wrapper {
-	display: flex;
-	width: 100%;
-	height: 100vh;
-	position: fixed;
-	top: 0;
-	left: 0;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
     z-index: 100;
     background: var(--color-bg-wrapper);
 }
 .form {
-	width: 400px;
+    width: 400px;
     position: relative;
-	margin: auto;
+    margin: auto;
     border-radius: 2px;
     background: var(--color-bg-form);
-	box-shadow: 0px 5px 5px 0px var(--color-bg-wrapper);
+    box-shadow: 0px 5px 5px 0px var(--color-bg-wrapper);
 }
 .header {
     font-size: var(--font-header);
@@ -114,12 +114,12 @@ export default {
     padding: calc(var(--padding) + 10px) var(--padding);
 }
 .input {
-	width: 100%;
+    width: 100%;
     border: none;
-	font-family: inherit;
-	font-size: var(--font-main);
-	padding: 15px;
-	margin: 5px 0px;
+    font-family: inherit;
+    font-size: var(--font-main);
+    padding: 15px;
+    margin: 5px 0px;
     background: var(--color-light);
     border-radius: 2px;
     outline: none;
