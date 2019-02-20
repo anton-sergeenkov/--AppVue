@@ -1,7 +1,7 @@
 <template>
 <transition name="fade">
     <div class="wrapper" @click="checkClose" ref="wrapper">
-        <div class="form" @keyup.esc="close">
+        <div class="form">
             <div class="header">Авторизация</div>
             <form @submit.prevent="checkLogin">
                 <div class="content">
@@ -54,6 +54,21 @@ export default {
             if (event.target == this.$refs.wrapper) {
                 this.close();
             }
+        },
+        handleEscapeKey(e) {
+            if (e.keyCode === 27) {
+                this.close();
+            }
+        }
+    },
+    mounted() {
+        if (typeof document !== 'undefined') {
+            document.body.addEventListener('keyup', this.handleEscapeKey);
+        }
+    },
+    destroyed() {
+        if (typeof document !== 'undefined') {
+            document.body.removeEventListener('keyup', this.handleEscapeKey);
         }
     }
 }
