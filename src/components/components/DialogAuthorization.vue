@@ -1,19 +1,21 @@
 <template>
-    <div class="wrapper">
-        <div class="form" @keyup.esc="close">
-            <div class="header">Авторизация</div>
-            <form @submit.prevent="checkLogin">
-                <div class="content">
-                    <input v-model="login" type="text" class="input" placeholder="Введите логин" autofocus required>
-                    <input v-model="password" type="text" class="input" placeholder="Введите пароль" required>
-                </div>
-                <div class="buttons">
-                    <input type="submit" class="btn btn-input" value="Вход">
-                    <input type="button" class="btn btn-input" value="Отмена" @click="close">
-                </div>
-            </form>
+    <transition name="fade">
+        <div class="wrapper">
+            <div class="form" @keyup.esc="close">
+                <div class="header">Авторизация</div>
+                <form @submit.prevent="checkLogin">
+                    <div class="content">
+                        <input v-model="login" type="text" class="input" placeholder="Введите логин" autofocus required>
+                        <input v-model="password" type="text" class="input" placeholder="Введите пароль" required>
+                    </div>
+                    <div class="buttons">
+                        <input type="submit" class="btn btn-input" value="Вход">
+                        <input type="button" class="btn btn-input" value="Отмена" @click="close">
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
+    </transition>
 </template>
 
 <script>
@@ -114,5 +116,11 @@ export default {
     color: var(--color-btn);
     text-transform: uppercase;
     background: var(--color-bg-btn);
+}
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .4s;
+}
+.fade-enter, .fade-leave-to {
+    opacity: 0;
 }
 </style>
