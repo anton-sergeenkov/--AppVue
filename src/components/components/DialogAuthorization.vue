@@ -1,6 +1,6 @@
 <template>
 <transition name="fade">
-    <div class="wrapper">
+    <div class="wrapper" @click="checkClose" ref="wrapper">
         <div class="form" @keyup.esc="close">
             <div class="header">Авторизация</div>
             <form @submit.prevent="checkLogin">
@@ -49,6 +49,11 @@ export default {
         },
         close() {
             this.$emit('close');
+        },
+        checkClose(event) {
+            if (event.target == this.$refs.wrapper) {
+                this.close();
+            }
         }
     }
 }
