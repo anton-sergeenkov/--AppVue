@@ -10,15 +10,18 @@
         <router-link :to="{name: 'cart'}" class="link-cart">
             <app-cart-counter></app-cart-counter>
         </router-link>
+        <app-authorization></app-authorization>
     </div>
 </template>
 
 <script>
 import CartCounter from './CartCounter.vue'
+import Authorization from './Authorization.vue'
 
 export default {
     components: {
-        'app-cart-counter': CartCounter
+        'app-cart-counter': CartCounter,
+        'app-authorization': Authorization
     }
 }
 </script>

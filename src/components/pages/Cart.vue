@@ -63,7 +63,7 @@ export default {
     flex-wrap: wrap;
 }
 .product {
-    width: 250px;
+    width: 300px;
     padding: 20px;
     background: var(--color-light);
     margin: 20px;

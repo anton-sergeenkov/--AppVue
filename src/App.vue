@@ -34,6 +34,7 @@ export const routes = [
 :root {
     --color-light: #eee;
     --color-accent: #ffda4a;
+    --color-accent-dark: #e9c057;
     --color-medium: #4b778e;
     --color-dark: #304a58;
     --font-small: 14px;
@@ -45,6 +46,9 @@ export const routes = [
 ::-webkit-scrollbar       { width: 7px; height: 7px;}
 ::-webkit-scrollbar-thumb { height: 50px; background-color: var(--color-medium); border-radius: 2px;}
 ::-webkit-scrollbar-track { background-color: var(--color-light); }
+* {
+    box-sizing: border-box;
+}
 body {
     margin: 0;
     padding: 0;
