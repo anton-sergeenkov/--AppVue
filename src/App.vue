@@ -85,4 +85,16 @@ h3 {
     font-size: var(--font-small);
     display: block;
 }
+
+/* vuetify */
+.application {
+    width: 100%;
+}
+.application--wrap {
+    min-height: auto;
+    flex-grow: 0;
+}
+.application .v-alert {
+    margin: 15px 0px;
+}
 </style>

@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper">
         <h1>Корзина покупок</h1>
-        <div class="container">
+        <div class="container" v-if="!isErrorApi">
             <div v-if="catalogCart.length == 0">Нет выбранных товаров</div>
             <div class="product" v-for="(item, i) in catalogCart">
                 <h3 class="product-name">{{item.name}}</h3>
@@ -10,6 +10,9 @@
                 <button class="btn product-buy" @click="removeProduct(item.id)">Удалить из корзины</button>
             </div>
         </div>
+        <v-app v-else>
+            <v-alert :value="true" type="error" outline>Ошибка доступа к API</v-alert>
+        </v-app>
     </div>
 </template>
 
@@ -21,7 +24,8 @@ import {api} from '../../api.js'
 export default {
     data() {
         return {
-            catalogCart: []
+            catalogCart: [],
+            isErrorApi: false
         };
     },
     methods: {
@@ -48,7 +52,10 @@ export default {
             .then(productsList => {
                 this.catalogCart = this.getCatalogCart(productsList, cartService.getProducts());
             })
-            .catch(error => console.error(error));
+            .catch(error => {
+                this.isErrorApi = true;
+                console.error(error);
+            });
     }
 }
 </script>

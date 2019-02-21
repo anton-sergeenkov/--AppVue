@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper">
         <h1>Каталог товаров</h1>
-        <div class="container">
+        <div class="container" v-if="!isErrorApi">
             <div class="product" v-for="(item, i) in catalog">
                 <h3 class="product-name">{{item.name}}</h3>
                 <div class="product-img" :style="{ backgroundImage: 'url('+item.img+')' }"></div>
@@ -14,6 +14,9 @@
                 </button>
             </div>
         </div>
+        <v-app v-else>
+            <v-alert :value="true" type="error" outline>Ошибка доступа к API</v-alert>
+        </v-app>
     </div>
 </template>
 
@@ -26,7 +29,8 @@ export default {
     data() {
         return {
             catalog: null,
-            products: []
+            products: [],
+            isErrorApi: false
         };
     },
     methods: {
@@ -50,7 +54,10 @@ export default {
             .then(productsList => {
                 this.catalog = productsList;
             })
-            .catch(error => console.error(error));
+            .catch(error => {
+                this.isErrorApi = true;
+                console.error(error);
+            });
     }
 }
 </script>
