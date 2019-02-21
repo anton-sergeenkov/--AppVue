@@ -81,7 +81,7 @@ export default {
     --color-bg-header: #304a58;
     --color-light: #eee;
     --font-header: 20px;
-    --font-main: 16px;
+    --font-input: 15px;
     --padding: 20px;
     --color-btn: #1867c0;
     --color-bg-btn: #e6eef7;
@@ -117,11 +117,12 @@ export default {
     width: 100%;
     border: none;
     font-family: inherit;
-    font-size: var(--font-main);
+    font-size: var(--font-input);
     padding: 15px;
     margin: 5px 0px;
     background: var(--color-light);
     border-radius: 2px;
+    border-bottom: 2px solid transparent;
     outline: none;
 }
 .buttons {
@@ -136,7 +137,14 @@ export default {
     color: var(--color-btn);
     text-transform: uppercase;
     background: var(--color-bg-btn);
+    transition: 0.4s;
+    border-bottom: 2px solid transparent;
 }
+.input:focus, .btn-input:focus, .btn-input:hover {
+    border-bottom: 2px solid var(--color-bg-wrapper);
+}
+
+/* transition  */
 .fade-enter-active, .fade-leave-active {
     transition: opacity .4s;
 }
