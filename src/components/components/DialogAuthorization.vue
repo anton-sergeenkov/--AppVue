@@ -5,8 +5,8 @@
             <div class="header">Авторизация</div>
             <form @submit.prevent="checkLogin">
                 <div class="content">
-                    <input v-model="login" type="text" class="input" placeholder="Введите логин" autofocus required>
-                    <input v-model="password" type="text" class="input" placeholder="Введите пароль" required>
+                    <input v-model.trim="login" type="text" class="input" placeholder="Введите логин" autofocus required>
+                    <input v-model.trim="password" type="text" class="input" placeholder="Введите пароль" required>
                 </div>
                 <div class="buttons">
                     <input type="submit" class="btn btn-input" value="Вход" :disabled="checkForm">
@@ -87,14 +87,14 @@ export default {
     --color-bg-wrapper:  rgba(0,0,0,0.3);
     --color-bg-form:     #fff;
     --color-bg-header:   #304a58;
+    --color-light:       #eee;
 
     --color-bg-btn:      #e6eef7;
     --color-btn:         #1867c0;
 
     --color-bg-disabled: #a5a198;
     --color-disabled:    #646464;
-    
-    --color-light:       #eee;
+
     --font-header:       20px;
     --font-input:        15px;
     --padding:           20px;
