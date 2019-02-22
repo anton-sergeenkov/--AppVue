@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import {api} from '../../api.js'
+
 export default {
     data() {
         return {
@@ -28,24 +30,14 @@ export default {
     },
     methods: {
         checkLogin() {
-            this.authorization()
+            api.authorizate(this.login, this.password)
                 .then(result => {
-                    alert(result);
+                    alert(result.token);
                     this.close();
                 })
-                .catch(error => alert(error.message));
-        },
-        authorization() {
-            var login = this.login;
-            var password = this.password;
-            var promise = new Promise(function(resolve, reject) {
-                if ( (login == 'admin') && (password == '123'))  { 
-                    resolve('Успешно');
-                } else { 
-                    reject(new Error('Неверный логин или пароль'));
-                }
-            });
-            return promise;
+                .catch(error => {
+                    alert(error.message);
+                });
         },
         close() {
             this.$emit('close');
@@ -92,8 +84,8 @@ export default {
     --color-bg-btn:      #e6eef7;
     --color-btn:         #1867c0;
 
-    --color-bg-disabled: #a5a198;
-    --color-disabled:    #646464;
+    --color-bg-disabled: #afafaf;
+    --color-disabled:    #7e7e7e;
 
     --font-header:       20px;
     --font-input:        15px;

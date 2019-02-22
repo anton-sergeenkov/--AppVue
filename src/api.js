@@ -17,6 +17,16 @@ class Api {
         });
         return promise;
     }
+    authorizate(login, password) {
+        var promise = new Promise(function(resolve, reject) {
+            if ( (login == 'admin') && (password == '123') )  { 
+                resolve({token: 'Успешно'});
+            } else { 
+                reject(new Error('Неверный логин или пароль'));
+            }
+        });
+        return promise;
+    }
 }
 
 export var api = new Api();
