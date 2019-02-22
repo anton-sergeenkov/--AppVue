@@ -32,16 +32,16 @@ export const routes = [
 
 <style>
 :root {
-    --color-light: #eee;
-    --color-accent: #ffda4a;
+    --color-light:       #eee;
+    --color-accent:      #ffda4a;
     --color-accent-dark: #e9c057;
-    --color-medium: #4b778e;
-    --color-dark: #304a58;
-    --font-small: 14px;
-    --font-main: 16px;
-    --font-h1: 23px;
-    --font-h2: 21px;
-    --margin-menu: 50px;
+    --color-medium:      #4b778e;
+    --color-dark:        #304a58;
+    --font-small:        14px;
+    --font-main:         16px;
+    --font-h1:           23px;
+    --font-h2:           21px;
+    --margin-menu:       50px;
 }
 ::-webkit-scrollbar       { width: 7px; height: 7px;}
 ::-webkit-scrollbar-thumb { height: 50px; background-color: var(--color-medium); border-radius: 2px;}

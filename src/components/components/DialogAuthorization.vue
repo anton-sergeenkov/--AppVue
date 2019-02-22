@@ -9,7 +9,7 @@
                     <input v-model="password" type="text" class="input" placeholder="Введите пароль" required>
                 </div>
                 <div class="buttons">
-                    <input type="submit" class="btn btn-input" value="Вход">
+                    <input type="submit" class="btn btn-input" value="Вход" :disabled="checkForm">
                     <input type="button" class="btn btn-input" value="Отмена" @click="close">
                 </div>
             </form>
@@ -61,6 +61,14 @@ export default {
             }
         }
     },
+    computed: {
+        checkForm() {
+            if (this.login && this.password) {
+                return false;
+            } 
+            return true;
+        }
+    },
     mounted() {
         if (typeof document !== 'undefined') {
             document.body.addEventListener('keyup', this.handleEscapeKey);
@@ -76,15 +84,20 @@ export default {
 
 <style scoped>
 .wrapper {
-    --color-bg-wrapper: rgba(0,0,0,0.3);
-    --color-bg-form: #fff;
-    --color-bg-header: #304a58;
-    --color-light: #eee;
-    --font-header: 20px;
-    --font-input: 15px;
-    --padding: 20px;
-    --color-btn: #1867c0;
-    --color-bg-btn: #e6eef7;
+    --color-bg-wrapper:  rgba(0,0,0,0.3);
+    --color-bg-form:     #fff;
+    --color-bg-header:   #304a58;
+
+    --color-bg-btn:      #e6eef7;
+    --color-btn:         #1867c0;
+
+    --color-bg-disabled: #a5a198;
+    --color-disabled:    #646464;
+    
+    --color-light:       #eee;
+    --font-header:       20px;
+    --font-input:        15px;
+    --padding:           20px;
 }
 .wrapper {
     display: flex;
@@ -142,6 +155,10 @@ export default {
 }
 .input:focus, .btn-input:focus, .btn-input:hover {
     border-bottom: 2px solid var(--color-bg-wrapper);
+}
+.btn-input[disabled] {
+    background: var(--color-bg-disabled);
+    color: var(--color-disabled);
 }
 
 /* transition  */
