@@ -3,7 +3,7 @@
         <h1>Корзина покупок</h1>
         <div class="container" v-if="!isErrorApi">
             <div v-if="catalogCart.length == 0">Нет выбранных товаров</div>
-            <div class="product" v-for="(item, i) in catalogCart">
+            <div class="product" v-for="item in catalogCart" :key="item.id">
                 <h3 class="product-name">{{item.name}}</h3>
                 <div class="product-img" :style="{ backgroundImage: 'url('+item.img+')' }"></div>
                 <div class="product-price">{{item.price}} USD</div>

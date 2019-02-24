@@ -1,44 +1,21 @@
 <template>
 <transition name="fade">
-    <div class="wrapper" @click="checkClose" ref="wrapper">
-        <div class="form">
-            <div class="header">Авторизация</div>
-            <form @submit.prevent="checkLogin">
-                <div class="content">
-                    <input v-model.trim="login" type="text" class="input" placeholder="Введите логин" autofocus required>
-                    <input v-model.trim="password" type="text" class="input" placeholder="Введите пароль" required>
-                </div>
-                <div class="buttons">
-                    <input type="submit" class="btn btn-input" value="Вход" :disabled="checkForm">
-                    <input type="button" class="btn btn-input" value="Отмена" @click="close">
-                </div>
-            </form>
+    <div class="modal-dialog-wrapper" @click="checkClose" ref="wrapper">
+        <div class="modal-dialog">
+            <div class="modal-dialog-header">
+                <slot name="header">Default Header</slot>
+            </div>
+            <div class="modal-dialog-form">
+                <slot name="form">Default Form</slot>
+            </div>
         </div>
     </div>
 </transition>
 </template>
 
 <script>
-import {api} from '../../api.js'
-
 export default {
-    data() {
-        return {
-            login: null,
-            password: null
-        }
-    },
     methods: {
-        checkLogin() {
-            api.authorizate(this.login, this.password)
-                .then(result => {
-                    alert(result.token);
-                    this.close();
-                })
-                .catch(error => {
-                    alert(error.message);
-                });
-        },
         close() {
             this.$emit('close');
         },
@@ -51,14 +28,6 @@ export default {
             if (e.keyCode === 27) {
                 this.close();
             }
-        }
-    },
-    computed: {
-        checkForm() {
-            if (this.login && this.password) {
-                return false;
-            } 
-            return true;
         }
     },
     mounted() {
@@ -75,7 +44,7 @@ export default {
 </script>
 
 <style scoped>
-.wrapper {
+.modal-dialog-wrapper  {
     --color-bg-wrapper:  rgba(0,0,0,0.3);
     --color-bg-form:     #fff;
     --color-bg-header:   #304a58;
@@ -91,7 +60,7 @@ export default {
     --font-input:        15px;
     --padding:           20px;
 }
-.wrapper {
+.modal-dialog-wrapper {
     display: flex;
     width: 100%;
     height: 100vh;
@@ -101,7 +70,7 @@ export default {
     z-index: 100;
     background: var(--color-bg-wrapper);
 }
-.form {
+.modal-dialog {
     width: 400px;
     position: relative;
     margin: auto;
@@ -109,16 +78,33 @@ export default {
     background: var(--color-bg-form);
     box-shadow: 0px 5px 5px 0px var(--color-bg-wrapper);
 }
-.header {
+.modal-dialog-header {
     font-size: var(--font-header);
     background: var(--color-bg-header);
     color: #fff;
     padding: var(--padding);
 }
-.content {
+
+/* transition  */
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .4s;
+}
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+}
+</style>
+
+<style>
+.modal-dialog-content {
     padding: calc(var(--padding) + 10px) var(--padding);
 }
-.input {
+.modal-dialog-buttons {
+    display: flex;
+    justify-content: flex-end;
+    padding: var(--padding);
+    border-top: 2px solid var(--color-light);
+}
+.modal-dialog-input {
     width: 100%;
     border: none;
     font-family: inherit;
@@ -130,13 +116,7 @@ export default {
     border-bottom: 2px solid transparent;
     outline: none;
 }
-.buttons {
-    display: flex;
-    justify-content: flex-end;
-    padding: var(--padding);
-    border-top: 2px solid var(--color-light);
-}
-.btn-input {
+.modal-dialog-wrapper .modal-dialog-btn {
     margin-left: 10px;
     font-weight: 600;
     color: var(--color-btn);
@@ -145,19 +125,11 @@ export default {
     transition: 0.4s;
     border-bottom: 2px solid transparent;
 }
-.input:focus, .btn-input:focus, .btn-input:hover {
+.modal-dialog-input:focus, .modal-dialog-btn:focus, .modal-dialog-btn:hover {
     border-bottom: 2px solid var(--color-bg-wrapper);
 }
-.btn-input[disabled] {
+.modal-dialog-btn[disabled] {
     background: var(--color-bg-disabled);
     color: var(--color-disabled);
-}
-
-/* transition  */
-.fade-enter-active, .fade-leave-active {
-    transition: opacity .4s;
-}
-.fade-enter, .fade-leave-to {
-    opacity: 0;
 }
 </style>

@@ -64,6 +64,7 @@ body {
 h1 {
     color: var(--color-dark);
     font-size: var(--font-h1);
+    width: 100%;
 }
 h2 {
     color: var(--color-dark);
