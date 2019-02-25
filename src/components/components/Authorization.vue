@@ -11,7 +11,7 @@
                             <input v-model="password" type="text" class="modal-dialog-input" placeholder="Введите пароль" required>
                         </div>
                         <div class="modal-dialog-buttons">
-                            <input type="submit" class="btn modal-dialog-btn" value="Вход" :disabled="checkForm">
+                            <input type="submit" class="btn modal-dialog-btn" value="Вход" :disabled="!isFormValid">
                             <input type="button" class="btn modal-dialog-btn" value="Отмена" @click="closeModal">
                         </div>
                     </form>
@@ -35,8 +35,8 @@ export default {
         return {
             isVisible: false,
             isAuthorized: false,
-            login: null,
-            password: null
+            login: '',
+            password: ''
         };
     },
     components: {
@@ -66,11 +66,8 @@ export default {
         }
     },
     computed: {
-        checkForm() {
-            if (this.login && this.password) {
-                return false;
-            } 
-            return true;
+        isFormValid() {
+            return this.login.length > 0 && this.password.length > 0;
         }
     },
     created() {
