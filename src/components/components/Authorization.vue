@@ -28,6 +28,7 @@
 <script>
 import ModalDialog from './ModalDialog.vue'
 import {api} from '../../api.js'
+import {localStorageService} from '../../services/LocalStorageService.js'
 
 export default {
     data() {
@@ -51,9 +52,9 @@ export default {
         checkLogin() {
             api.authorizate(this.login, this.password)
                 .then(result => {
-                    // alert(result.token);
                     this.isAuthorized = true;
                     this.closeModal();
+                    localStorageService.putValue('authorizate', this.login);
                 })
                 .catch(error => {
                     alert(error.message);
@@ -61,6 +62,7 @@ export default {
         },
         logOut() {
             this.isAuthorized = false;
+            localStorageService.removeValue('authorizate');
         }
     },
     computed: {
@@ -69,6 +71,13 @@ export default {
                 return false;
             } 
             return true;
+        }
+    },
+    created() {
+        var value = localStorageService.getValue('authorizate');
+        if (value) {
+            this.isAuthorized = true;
+            this.login = value;
         }
     }
 }

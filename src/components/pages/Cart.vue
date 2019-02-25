@@ -18,7 +18,7 @@
 
 <script>
 import {mapActions} from 'vuex'
-import {cartService} from '../../CartService.js'
+import {cartService} from '../../services/CartService.js'
 import {api} from '../../api.js'
 
 export default {

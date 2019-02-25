@@ -20,7 +20,7 @@ class Api {
     authorizate(login, password) {
         var promise = new Promise(function(resolve, reject) {
             if ( (login == 'admin') && (password == '123') )  { 
-                resolve({token: 'Успешно'});
+                resolve({token: true});
             } else { 
                 reject(new Error('Неверный логин или пароль'));
             }

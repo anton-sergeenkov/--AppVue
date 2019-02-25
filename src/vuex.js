@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {cartService} from './CartService.js'
+import {cartService} from './services/CartService.js'
 
 Vue.use(Vuex)
 
