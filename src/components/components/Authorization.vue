@@ -11,8 +11,8 @@
                             <input v-model="password" type="text" class="modal-dialog-input" placeholder="Введите пароль" required>
                         </div>
                         <div class="modal-dialog-buttons">
-                            <input type="submit" class="btn modal-dialog-btn" value="Вход" :disabled="!isFormValid">
-                            <input type="button" class="btn modal-dialog-btn" value="Отмена" @click="closeModal">
+                            <button type="submit" class="btn modal-dialog-btn" :disabled="!isFormValid">Вход</button>
+                            <button type="cancel" @click.prevent="closeModal" class="btn modal-dialog-btn">Отмена</button>
                         </div>
                     </form>
                 </template>
