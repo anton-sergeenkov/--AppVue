@@ -1,27 +1,31 @@
 <template>
     <div class="wrapper">
         <h1>Корзина покупок</h1>
-        <div class="container">
+        <div class="container" v-if="!isErrorApi">
             <div v-if="catalogCart.length == 0">Нет выбранных товаров</div>
-            <div class="product" v-for="(item, i) in catalogCart">
+            <div class="product" v-for="item in catalogCart" :key="item.id">
                 <h3 class="product-name">{{item.name}}</h3>
                 <div class="product-img" :style="{ backgroundImage: 'url('+item.img+')' }"></div>
                 <div class="product-price">{{item.price}} USD</div>
                 <button class="btn product-buy" @click="removeProduct(item.id)">Удалить из корзины</button>
             </div>
         </div>
+        <v-app v-else>
+            <v-alert :value="true" type="error" outline>Ошибка доступа к API</v-alert>
+        </v-app>
     </div>
 </template>
 
 <script>
 import {mapActions} from 'vuex'
-import {cartService} from '../../CartService.js'
+import {cartService} from '../../services/CartService.js'
 import {api} from '../../api.js'
 
 export default {
     data() {
         return {
-            catalogCart: []
+            catalogCart: [],
+            isErrorApi: false
         };
     },
     methods: {
@@ -48,7 +52,10 @@ export default {
             .then(productsList => {
                 this.catalogCart = this.getCatalogCart(productsList, cartService.getProducts());
             })
-            .catch(error => console.error(error));
+            .catch(error => {
+                this.isErrorApi = true;
+                console.error(error);
+            });
     }
 }
 </script>

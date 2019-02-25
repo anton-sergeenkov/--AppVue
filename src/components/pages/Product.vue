@@ -1,11 +1,14 @@
 <template>
     <div class="wrapper">
         <h2>{{product.name}}</h2>
-        <div class="container">
+        <div class="container" v-if="!isErrorApi">
             <div class="img" :style="{ backgroundImage: 'url('+product.img+')' }"></div>
             <div class="price">{{product.price}} USD</div>
             <div class="description">{{product.description}}</div>
         </div>
+        <v-app v-else>
+            <v-alert :value="true" type="error" outline>Ошибка доступа к API</v-alert>
+        </v-app>
     </div>
 </template>
 
@@ -15,7 +18,8 @@ import {api} from '../../api.js'
 export default {
     data() {
         return {
-            product: []
+            product: [],
+            isErrorApi: false
         };
     },
     created() {
@@ -23,7 +27,10 @@ export default {
             .then(productsList => {
                 this.product = productsList[this.$route.params.id];
             })
-            .catch(error => console.error(error));   
+            .catch(error => {
+                this.isErrorApi = true;
+                console.error(error);
+            });
     }
 }
 </script>

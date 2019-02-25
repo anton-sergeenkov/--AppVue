@@ -32,16 +32,16 @@ export const routes = [
 
 <style>
 :root {
-    --color-light: #eee;
-    --color-accent: #ffda4a;
+    --color-light:       #eee;
+    --color-accent:      #ffda4a;
     --color-accent-dark: #e9c057;
-    --color-medium: #4b778e;
-    --color-dark: #304a58;
-    --font-small: 14px;
-    --font-main: 16px;
-    --font-h1: 23px;
-    --font-h2: 21px;
-    --margin-menu: 50px;
+    --color-medium:      #4b778e;
+    --color-dark:        #304a58;
+    --font-small:        14px;
+    --font-main:         16px;
+    --font-h1:           23px;
+    --font-h2:           21px;
+    --margin-menu:       50px;
 }
 ::-webkit-scrollbar       { width: 7px; height: 7px;}
 ::-webkit-scrollbar-thumb { height: 50px; background-color: var(--color-medium); border-radius: 2px;}
@@ -64,6 +64,7 @@ body {
 h1 {
     color: var(--color-dark);
     font-size: var(--font-h1);
+    width: 100%;
 }
 h2 {
     color: var(--color-dark);
@@ -84,5 +85,17 @@ h3 {
     font-family: inherit;
     font-size: var(--font-small);
     display: block;
+}
+
+/* vuetify */
+.application {
+    width: 100%;
+}
+.application--wrap {
+    min-height: auto;
+    flex-grow: 0;
+}
+.application .v-alert {
+    margin: 15px 0px;
 }
 </style>
