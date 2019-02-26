@@ -60,6 +60,7 @@ body {
     margin: auto;
     display: flex;
     padding: 30px;
+    flex-wrap: wrap;
 }
 h1 {
     color: var(--color-dark);
