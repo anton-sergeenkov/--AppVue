@@ -7,7 +7,7 @@
                 <h3 class="product-name">{{item.name}}</h3>
                 <div class="product-img" :style="{ backgroundImage: 'url('+item.img+')' }"></div>
                 <div class="product-price">{{item.price}} USD</div>
-                <button class="btn product-buy" @click="removeProduct(item.id)">Удалить из корзины</button>
+                <ui-button color="secondary" @click.native="removeProduct(item.id)" block class="btn-product">Удалить из корзины</ui-button>
             </div>
         </div>
         <v-app v-else>
@@ -93,12 +93,7 @@ export default {
     font-weight: bold;
     text-align: center;
 }
-.product-buy {
-    border: 1px solid var(--color-dark);
+.btn-product {
     margin-top: 10px;
-    transition: 0.4s;
-}
-.product-buy:hover {
-    background: #fff;
 }
 </style>
