@@ -8,7 +8,7 @@
                 <div class="product-price">{{item.price}} USD</div>
                 <div class="product-description">{{item.description}}</div>
                 <router-link :to="{name: 'product', params: {id: i}}" class="product-link">Подробнее</router-link>
-                
+
                 <slot v-if="checkProduct(item.id)">
                     <ui-button color="primary-active" @click.native="chooseProduct(item.id)" block class="btn-product">Удалить из корзины</ui-button>
                 </slot>
