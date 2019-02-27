@@ -1,36 +1,56 @@
 <template>
-    <input :class="className">
+    <input :class="classes" :value="value" @input="$emit('input', $event.target.value)" class="ui-input">
 </template>
 
 <script>
 export default {
     props: {
-        className: String
+        color: { type: String, default: 'primary' },
+        block: { type: Boolean },
+        value: { type: String }
+    },
+    computed: {
+        classes() {
+            return {
+                ['ui-input--'+this.color]: true
+            };
+        }
     }
 }
 </script>
 
 <style scoped>
-input {
+.ui-input {
     --color-bg-wrapper:  rgba(0,0,0,0.3);
     --font-input:        15px;
     --color-light:       #eee;
 }
-input[type="text"] {
-    width: 100%;
+.ui-input{
+    width: 100%; 
+    padding: 15px;
     border: none;
+    border-radius: 2px;
     font-family: inherit;
     font-size: var(--font-input);
-    padding: 15px;
-    border-radius: 2px;
     outline: none;
 }
-.form {
+
+/*----------------------------------------
+PRIMARY 
+----------------------------------------*/
+.ui-input--primary {
+    border: 1px solid #000;
+}
+
+/*----------------------------------------
+FORM 
+----------------------------------------*/
+.ui-input--form {
     margin: 5px 0px;
     background: var(--color-light);
     border-bottom: 2px solid transparent;
 }
-.form:focus {
+.ui-input--form:focus {
     border-bottom: 2px solid var(--color-bg-wrapper);
 }
 </style>
