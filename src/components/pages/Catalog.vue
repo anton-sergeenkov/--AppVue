@@ -15,7 +15,7 @@
                 <slot v-else>
                     <ui-button color="primary" @click.native="chooseProduct(item.id)" block class="btn-product">Добавить в корзину</ui-button>
                 </slot>
-                
+
             </div>
         </div>
         <v-app v-else>
@@ -114,8 +114,5 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.active {
-    background-image: linear-gradient(to right, #e2f87c, #d6f567, #c8f151, #b9ee38, #a8eb12);
 }
 </style>
