@@ -1,18 +1,18 @@
 <template>
     <div>
         <div class="log-in" v-if="!isAuthorized">
-            <button class="btn btn-login" @click="showModal">Вход</button>
+            <ui-button color="menu" @click.native="showModal" class="btn-login">Вход</ui-button>
             <app-modal-dialog v-if="isVisible" @close="closeModal">
                 <template v-slot:header>Custom Header</template>
                 <template v-slot:form>
                     <form @submit.prevent="checkLogin">
                         <div class="modal-dialog-content">
-                            <input v-model="login" type="text" class="modal-dialog-input" placeholder="Введите логин" autofocus required>
-                            <input v-model="password" type="text" class="modal-dialog-input" placeholder="Введите пароль" required>
+                            <ui-input color="form" v-model="login" type="text" placeholder="Введите логин" autofocus required></ui-input>
+                            <ui-input color="form" v-model="password" type="password" placeholder="Введите пароль" required></ui-input>
                         </div>
                         <div class="modal-dialog-buttons">
-                            <button type="submit" class="btn modal-dialog-btn" :disabled="!isFormValid">Вход</button>
-                            <button type="cancel" @click.prevent="closeModal" class="btn modal-dialog-btn">Отмена</button>
+                            <ui-button color="form" type="submit" :disabled="!isFormValid" class="btn-form">Вход</ui-button>
+                            <ui-button color="form" type="cancel" @click.native.prevent="closeModal" class="btn-form">Отмена</ui-button>
                         </div>
                     </form>
                 </template>
@@ -20,13 +20,13 @@
         </div>
         <div class="log-out" v-else>
             Привет <span class="log-out-name">{{login}}</span>
-            <button class="btn btn-login" @click="logOut">Выход</button>
+            <ui-button color="menu" @click.native="logOut" class="btn-login">Выход</ui-button>
         </div>
     </div>
 </template>
 
 <script>
-import ModalDialog from './ModalDialog.vue'
+import ModalDialog from '../ui/ModalDialog.vue'
 import {api} from '../../api.js'
 import {localStorageService} from '../../services/LocalStorageService.js'
 
@@ -82,10 +82,6 @@ export default {
 
 <style scoped>
 .btn-login {
-    background: #fff;
-    color: var(--color-accent-dark);
-    font-weight: bold;
-    text-transform: uppercase;
     margin-left: 15px;
 }
 .log-out {
@@ -95,5 +91,17 @@ export default {
 .log-out-name {
     font-weight: bold;
     margin-left: 5px;
+}
+.btn-form {
+    margin-left: 10px;
+}
+.modal-dialog-content {
+    padding: 30px 20px;
+}
+.modal-dialog-buttons {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+    border-top: 2px solid var(--color-light);
 }
 </style>
