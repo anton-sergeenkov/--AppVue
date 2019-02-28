@@ -19,3 +19,5 @@ npm run lint  # lints and fixes files
 ## Технологии
 - Vue.js, Vuex, Vue Router, Vue CLI 3  
 - HTML5, CSS3, JavaScript  
+
+[![forthebadge](https://forthebadge.com/images/badges/made-with-vue.svg)](https://forthebadge.com)
