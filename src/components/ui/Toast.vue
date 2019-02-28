@@ -10,7 +10,7 @@
 export default {
     props: {
         theme:    { type: String, default: 'primary' },
-        position: { type: String, default: 'top' },
+        position: { type: String, default: 'left-bottom' },
         duration: { type: Number, default: 3500 }
     },
     computed: {
@@ -37,7 +37,9 @@ export default {
     z-index: 200;
     font-size: 14px;
     text-align: center;
+    cursor: pointer;
     border-radius: 5px;
+    color: #fff;
     border-top: 4px solid rgba(0,0,0,0.12);
 }
 
@@ -45,23 +47,18 @@ export default {
 THEME 
 ----------------------------------------*/
 .ui-toast--primary {
-    color: #fff;
     background: rgba(0,0,0,0.7);
 }
 .ui-toast--success {
-    color: #fff;
     background: #4caf50;
 }
 .ui-toast--info {
-    color: #fff;
     background: #2196f3;
 }
 .ui-toast--warning {
-    color: #fff;
     background: #fb8c00;
 }
 .ui-toast--error {
-    color: #fff;
     background: #ff5252;
 }
 
