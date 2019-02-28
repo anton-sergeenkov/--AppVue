@@ -89,7 +89,7 @@ POSITION
 TRANSITION 
 ----------------------------------------*/
 .fade-enter-active, .fade-leave-active {
-    transition: opacity .4s;
+    transition: opacity 0.4s;
 }
 .fade-enter, .fade-leave-to {
     opacity: 0;
