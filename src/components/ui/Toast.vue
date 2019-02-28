@@ -89,9 +89,9 @@ POSITION
 TRANSITION 
 ----------------------------------------*/
 .fade-enter-active, .fade-leave-active {
-    transition: opacity 0.4s;
+    transition: 1s;
 }
 .fade-enter, .fade-leave-to {
-    opacity: 0;
+    transform: translateY(100px);
 }
 </style>

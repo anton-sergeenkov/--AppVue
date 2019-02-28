@@ -1,5 +1,6 @@
 <template>
     <div>
+
         <div class="log-in" v-if="!isAuthorized">
             <ui-button color="menu" @click.native="showModal" class="btn-login">Вход</ui-button>
             <app-modal-dialog v-if="isVisible" @close="closeModal">
@@ -18,10 +19,18 @@
                 </template>
             </app-modal-dialog>
         </div>
+        
         <div class="log-out" v-else>
             Привет <span class="log-out-name">{{login}}</span>
             <ui-button color="menu" @click.native="logOut" class="btn-login">Выход</ui-button>
         </div>
+
+        <ui-toast 
+            v-if="authorizationToast.active" 
+            :theme="authorizationToast.theme" 
+            @close="closeAuthorizationToast"
+        >{{authorizationToast.text}}</ui-toast>
+
     </div>
 </template>
 
@@ -36,13 +45,21 @@ export default {
             isVisible: false,
             isAuthorized: false,
             login: '',
-            password: ''
+            password: '',
+            authorizationToast: {
+                active: false,
+                theme: '',
+                text: ''
+            }
         };
     },
     components: {
         'app-modal-dialog': ModalDialog
     },
     methods: {
+        closeAuthorizationToast() {
+            this.authorizationToast.active = false;
+        },
         showModal() {
             this.isVisible = true;
         },
@@ -55,9 +72,15 @@ export default {
                     this.isAuthorized = true;
                     this.closeModal();
                     localStorageService.putValue('authorizate', this.login);
+
+                    this.authorizationToast.active = true;
+                    this.authorizationToast.theme = 'success';
+                    this.authorizationToast.text = result.token;
                 })
                 .catch(error => {
-                    alert(error.message);
+                    this.authorizationToast.active = true;
+                    this.authorizationToast.theme = 'error';
+                    this.authorizationToast.text = error.message;
                 });
         },
         logOut() {
