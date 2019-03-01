@@ -5,7 +5,9 @@ import Vuetify from 'vuetify'
 import App from './App.vue'
 import {routes} from './App.vue'
 import {store} from './vuex.js'
+
 import './components/ui'
+import './components/svg'
 
 Vue.use(VueRouter)
 Vue.use(Vuetify)
