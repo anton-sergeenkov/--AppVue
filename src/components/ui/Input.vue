@@ -5,14 +5,14 @@
 <script>
 export default {
     props: {
-        color: { type: String, default: 'primary' },
+        theme: { type: String, default: 'primary' },
         block: { type: Boolean },
         value: { type: String }
     },
     computed: {
         classes() {
             return {
-                ['ui-input--'+this.color]: true
+                ['ui-input--'+this.theme]: true
             };
         }
     }

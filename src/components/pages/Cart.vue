@@ -7,7 +7,7 @@
                 <h3 class="product-name">{{item.name}}</h3>
                 <div class="product-img" :style="{ backgroundImage: 'url('+item.img+')' }"></div>
                 <div class="product-price">{{item.price}} USD</div>
-                <ui-button color="secondary" @click.native="removeProduct(item.id)" block class="btn-product">Удалить из корзины</ui-button>
+                <ui-button theme="secondary" @click.native="removeProduct(item.id)" block class="btn-product">Удалить из корзины</ui-button>
             </div>
         </div>
         <v-app v-else>

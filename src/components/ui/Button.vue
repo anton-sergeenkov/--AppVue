@@ -7,15 +7,15 @@
 <script>
 export default {
     props: {
+        theme: { type: String, default: 'primary' },
         size:  { type: String, default: 'sm' },
-        color: { type: String, default: 'primary' },
         block: { type: Boolean }
     },
     computed: {
         classes() {
             return {
                 ['ui-btn--'+this.size]: true, 
-                ['ui-btn--'+this.color]: true,
+                ['ui-btn--'+this.theme]: true,
                 'ui-btn--block': this.block
             };
         }

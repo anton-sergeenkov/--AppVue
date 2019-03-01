@@ -2,18 +2,18 @@
     <div>
 
         <div class="log-in" v-if="!isAuthorized">
-            <ui-button color="menu" @click.native="showModal" class="btn-login">Вход</ui-button>
+            <ui-button theme="menu" @click.native="showModal" class="btn-login">Вход</ui-button>
             <app-modal-dialog v-if="isVisible" @close="closeModal">
                 <template v-slot:header>Custom Header</template>
                 <template v-slot:form>
                     <form @submit.prevent="checkLogin">
                         <div class="modal-dialog-content">
-                            <ui-input color="form" v-model="login" type="text" placeholder="Введите логин" autofocus required></ui-input>
-                            <ui-input color="form" v-model="password" type="password" placeholder="Введите пароль" required></ui-input>
+                            <ui-input theme="form" v-model="login" type="text" placeholder="Введите логин" autofocus required></ui-input>
+                            <ui-input theme="form" v-model="password" type="password" placeholder="Введите пароль" required></ui-input>
                         </div>
                         <div class="modal-dialog-buttons">
-                            <ui-button color="form" type="submit" :disabled="!isFormValid" class="btn-form">Вход</ui-button>
-                            <ui-button color="form" type="cancel" @click.native.prevent="closeModal" class="btn-form">Отмена</ui-button>
+                            <ui-button theme="form" type="submit" :disabled="!isFormValid" class="btn-form">Вход</ui-button>
+                            <ui-button theme="form" type="cancel" @click.native.prevent="closeModal" class="btn-form">Отмена</ui-button>
                         </div>
                     </form>
                 </template>
@@ -22,7 +22,7 @@
         
         <div class="log-out" v-else>
             Привет <span class="log-out-name">{{login}}</span>
-            <ui-button color="menu" @click.native="logOut" class="btn-login">Выход</ui-button>
+            <ui-button theme="menu" @click.native="logOut" class="btn-login">Выход</ui-button>
         </div>
 
         <ui-toast 

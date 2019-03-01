@@ -10,10 +10,10 @@
                 <router-link :to="{name: 'product', params: {id: i}}" class="product-link">Подробнее</router-link>
 
                 <slot v-if="checkProduct(item.id)">
-                    <ui-button color="primary-active" @click.native="chooseProduct(item.id)" block class="btn-product">Удалить из корзины</ui-button>
+                    <ui-button theme="primary-active" @click.native="chooseProduct(item.id)" block class="btn-product">Удалить из корзины</ui-button>
                 </slot>
                 <slot v-else>
-                    <ui-button color="primary" @click.native="chooseProduct(item.id)" block class="btn-product">Добавить в корзину</ui-button>
+                    <ui-button theme="primary" @click.native="chooseProduct(item.id)" block class="btn-product">Добавить в корзину</ui-button>
                 </slot>
 
             </div>
