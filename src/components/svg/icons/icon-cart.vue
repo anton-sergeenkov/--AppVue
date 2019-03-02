@@ -17,10 +17,8 @@
 
 <script>
 export default {
-	data() {
-		return {
-			viewBox: '0 0 446.853 446.853'
-		}
+	created() {
+		this.$emit('ready', '0 0 446.853 446.853');
 	}
 }
 </script>

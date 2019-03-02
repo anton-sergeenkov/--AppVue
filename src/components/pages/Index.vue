@@ -2,9 +2,15 @@
     <div class="wrapper">
         <h1>Главная</h1>
 
-        <icon-base color="#304a58" :width="150" :height="150" viewBox="0 0 446.853 446.853">
-            <icon-shopping-cart />
-        </icon-base>
+        <icon-svg name="cart"        color="#304a58" :width="70" :height="70" />
+        <icon-svg name="close"       color="#365be2" :width="70" :height="70" />
+        <icon-svg name="menu-square" color="#36e278" :width="70" :height="70" />
 
     </div>
 </template>
+
+<style>
+svg {
+    margin: 20px;
+}
+</style>
