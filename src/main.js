@@ -1,21 +1,33 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Vuetify from 'vuetify'
-
 import App from './App.vue'
-import {routes} from './App.vue'
+
+// Vuex
 import {store} from './vuex.js'
 
-import './components/ui'
-import './components/svg'
-
+// VueRouter
+import VueRouter from 'vue-router'
+import {routes} from './App.vue'
 Vue.use(VueRouter)
-Vue.use(Vuetify)
-
 const router = new VueRouter({
     mode: 'history',
     routes 
 })
+
+// Vuetify
+import Vuetify from 'vuetify'
+Vue.use(Vuetify)
+
+// FortAwesome
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faComment as fasComment } from '@fortawesome/free-solid-svg-icons'
+import { faComment as farComment } from '@fortawesome/free-regular-svg-icons'
+library.add(fasComment, farComment)
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+
+// Components
+import './components/ui'
+import './components/svg'
 
 new Vue({
     el: '#app',
