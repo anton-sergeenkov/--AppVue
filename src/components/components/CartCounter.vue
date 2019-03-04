@@ -1,5 +1,6 @@
 <template>
     <div class="cart">
+        <icon-svg name="cart" color="#304a58" width="100%" height="100%" />
         <div class="cart-counter">{{ getProductsCount }}</div>
     </div>
 </template>
@@ -29,10 +30,6 @@ export default {
     width: 40px;
     height: 40px;
     position: relative;
-    background-image: url(../../assets/icons/shopping-cart.svg);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: contain;
 }
 .cart-counter {
     background: #fff;
