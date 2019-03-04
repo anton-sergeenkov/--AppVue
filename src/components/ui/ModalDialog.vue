@@ -82,7 +82,7 @@ export default {
     font-size: var(--font-header);
     background: var(--color-bg-header);
     color: #fff;
-    padding: var(--padding);
+    padding: 20px;
 }
 
 /* transition  */
@@ -91,45 +91,5 @@ export default {
 }
 .fade-enter, .fade-leave-to {
     opacity: 0;
-}
-</style>
-
-<style>
-.modal-dialog-content {
-    padding: calc(var(--padding) + 10px) var(--padding);
-}
-.modal-dialog-buttons {
-    display: flex;
-    justify-content: flex-end;
-    padding: var(--padding);
-    border-top: 2px solid var(--color-light);
-}
-.modal-dialog-input {
-    width: 100%;
-    border: none;
-    font-family: inherit;
-    font-size: var(--font-input);
-    padding: 15px;
-    margin: 5px 0px;
-    background: var(--color-light);
-    border-radius: 2px;
-    border-bottom: 2px solid transparent;
-    outline: none;
-}
-.modal-dialog-wrapper .modal-dialog-btn {
-    margin-left: 10px;
-    font-weight: 600;
-    color: var(--color-btn);
-    text-transform: uppercase;
-    background: var(--color-bg-btn);
-    transition: 0.4s;
-    border-bottom: 2px solid transparent;
-}
-.modal-dialog-input:focus, .modal-dialog-btn:focus, .modal-dialog-btn:hover {
-    border-bottom: 2px solid var(--color-bg-wrapper);
-}
-.modal-dialog-btn[disabled] {
-    background: var(--color-bg-disabled);
-    color: var(--color-disabled);
 }
 </style>

@@ -8,10 +8,14 @@
                 <div class="product-price">{{item.price}} USD</div>
                 <div class="product-description">{{item.description}}</div>
                 <router-link :to="{name: 'product', params: {id: i}}" class="product-link">Подробнее</router-link>
-                <button class="btn product-buy" :class="{active:checkProduct(item.id)}" @click="chooseProduct(item.id)">
-                    <slot v-if="checkProduct(item.id)">Удалить из корзины</slot>
-                    <slot v-else>Добавить в корзину</slot>
-                </button>
+
+                <slot v-if="checkProduct(item.id)">
+                    <ui-button theme="primary-active" @click.native="chooseProduct(item.id)" block class="btn-product">Удалить из корзины</ui-button>
+                </slot>
+                <slot v-else>
+                    <ui-button theme="primary" @click.native="chooseProduct(item.id)" block class="btn-product">Добавить в корзину</ui-button>
+                </slot>
+
             </div>
         </div>
         <v-app v-else>
@@ -93,7 +97,7 @@ export default {
 .product-price       { grid-area: price; }
 .product-description { grid-area: description; }
 .product-link        { grid-area: link; }
-.product-buy         { grid-area: shopping; }
+.btn-product         { grid-area: shopping; }
 
 .product-price {
     font-weight: bold;
@@ -110,11 +114,5 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.product-buy {
-    background: #fff;
-}
-.active {
-    background-image: linear-gradient(to right, #e2f87c, #d6f567, #c8f151, #b9ee38, #a8eb12);
 }
 </style>
