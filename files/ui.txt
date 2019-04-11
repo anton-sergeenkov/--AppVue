@@ -1,0 +1,44 @@
+
+<icon-svg name="cart"        color="#304a58" :width="70" :height="70" />
+<icon-svg name="close"       color="#365be2" :width="70" :height="70" />
+<icon-svg name="menu-square" color="#36e278" :width="70" :height="70" />
+
+	
+theme:    primary | secondary | success | info | warning | error | dark | bubble | outline
+position: top | center | bottom
+duration: 5s | 10s
+icon:     'icon'
+
+
+//-------------------------------------
+<icon-base>
+//-------------------------------------
+<icon-base color="yellowgreen" :width="150" :height="150">
+	<icon-image />
+</icon-base>
+
+//-------------------------------------
+<ui-toast>
+//-------------------------------------
+<template>
+    <div class="wrapper">
+        <h1>Главная</h1>
+        <ui-toast v-if="showMessage" theme="info" @close="closeMessage">Неверный логин или пароль</ui-toast>
+        <button @click="showMessage = true">Кнопка</button>
+    </div>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            showMessage: false
+        }
+    },
+    methods: {
+        closeMessage() {
+            this.showMessage = false;
+        }
+    }
+}
+</script>
